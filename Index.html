@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Jeyakrishna Store Bill</title>
+  
+  <link rel="stylesheet" href="https://github.com/jeyaskcet/JeyProducts/style.css"> <!-- Load your style (CSS) file -->
+  <script src="https://github.com/jeyaskcet/JeyProducts/scripts.js""></script> <!-- Load your script (JavaScript) file -->
+</head>
+<body>
+
+<div class="container">
+  <div class="Address" style="text-align: center;">
+    <img src="https://drive.google.com/file/d/1myeQzCqAkK-FSM42T08yTtX1g9kCLdid/view?usp=drivesdk" alt="Shop Logo" width="150" height="150">
+    <h2>Jeyakrishna Store</h2>
+    <p>6/49, Middle Street, Elayirampannai</p>
+    <p>Contact Number - 9944600814, 8667038973</p>
+  </div>
+
+  <h3>Bill Summary</h3>
+  
+  <button onclick="enterCustomerDetails()">Enter Customer Details</button>
+
+  <div class="customer-details" id="customerDetails">
+    <h3>Enter Customer Details</h3>
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerNameInput"><br>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumberInput">
+    <button onclick="submitCustomerDetails()">Submit</button>
+  </div>
+
+    <div class="bill-details">
+      <p>
+        <label for="cashierName">Cashier Name:</label>
+        <select id="cashierName">
+          <option value="Jey">Jey</option>
+          <option value="Krishna">Krishna</option>
+          <option value="JK">JK</option>
+          <!-- Add more names as needed -->
+        </select>
+      </p>
+
+      <p>
+        <span style="clear: both; display: block;"></span> <!-- Clear float for layout -->
+        <span style="float: left;">Bill Number: <span id="billNumber"></span></span>
+        <span style="float: right;">Date: <span id="currentDate"></span></span>
+      </p>
+    </div>
+
+    <div class="item-details" style="display: flex;">
+      <div style="flex: 1; text-align: center;">
+        <label for="itemName">Item Name:</label>
+        <input type="text" id="itemName">
+      </div>
+      <div style="flex: 1; text-align: center;">
+        <label for="itemQuantity">Item Quantity:</label>
+        <input type="number" id="itemQuantity">
+      </div>
+      <div style="flex: 1; text-align: center;">
+        <label for="itemPrice">Item Price:</label>
+        <input type="number" id="itemPrice">
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+      <button onclick="addItem()">Add Item</button>
+    </div>
+
+  <div style="flex: 1; text-align: right;">
+    <label for="showPerUnitPrice">Show Per Unit Price:</label>
+    <input type="checkbox" id="showPerUnitPrice" checked onchange="togglePerUnitPrice()">
+  </div>
+
+  <div class="customer-details" id="customerDetails">
+    <h3>Enter Customer Details</h3>
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerNameInput"><br>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumberInput">
+    <button onclick="submitCustomerDetails()">Submit</button>
+  </div>
+
+  <div id="customerInfo" class="total" style="margin-top: 10px;"></div>
+
+  <table id="itemTable">
+    <tr>
+      <th>Serial Number</th>
+      <th>Item Name</th>
+      <th>Item Quantity</th>
+      <th id="perUnitPriceHeader">Per Unit Price</th>
+      <th>Item Price</th>
+    </tr>
+  </table>
+
+  <p id="advanceAmountDisplay" class="total">Advance Amount: ₹0.00</p>
+
+  <p class="total">Total Amount: <span id="totalAmount">₹0.00</span></p>
+
+  <p>Cashier: <span id="cashier"></span></p>
+
+  <button class="add-advance-button" onclick="addAdvanceAmount()">Add Advance Amount</button>
+  <button class="remove-item-button" onclick="removeItem()">Remove Item</button>
+  <button class="calculate-total-button" onclick="calculateTotal()">Calculate Total Amount</button>
+  <button class="print-button" onclick="printSummary()">Print Summary</button>
+  <button class="print-pdf-button" onclick="saveAsPDF()">Save as PDF</button>
+</div>
+</div>
+
+<script>
+    <!-- Call the functions to update the HTML content -->
+ 
+document.getElementById("billNumber").textContent = generateBillNumber();
+document.getElementById("currentDate").textContent = getCurrentDate();
+</script>
+
+</body>
+</html>
