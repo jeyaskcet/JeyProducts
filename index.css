@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 0vh;
+    box-sizing: border-box;
+    background-image: url("img/loginbg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0vh;
+}
+.app-name {
+    text-align: center;
+    font-size: 36px; /* Larger font size */
+    font-weight: bold;
+    margin-top: 50px; /* Increased top margin */
+    color: #ff6600; /* Bright orange color */
+    text-transform: uppercase; /* Uppercase letters */
+    letter-spacing: 3px; /* Space out letters */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+}
+.login-container {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 50px; /* Add a margin to position it slightly below */
+    max-width: 400px;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+p {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.login-running-letter {
+    font-size: 18px;
+    font-style: italic;
+    color: red; /* Set text color to red */
+    animation: running-letter-animation 10s linear infinite; /* Adjust the animation duration */
+    white-space: nowrap;
+    overflow: hidden;    
+    width: 235%;
+}
+
+@keyframes running-letter-animation {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.password-settings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    margin: 0;
+    padding: auto;
+}
+
+#remember {
+    margin-right: auto;
+}
+
+#forgotPasswordLink {
+    margin-left: 10px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.forgot-password-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    display: none;
+}
+
+.forgot-password-popup .close-popup {
+    cursor: pointer;
+    float: right;
+    font-weight: bold;
+}
+
+.forgot-password-popup .close-popup:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Affordable and professional web design">
+	  <meta name="keywords" content="web design, affordable web design, professional web design">
+  	<meta name="author" content="Jeyakrishna">
+    <title>Jey Apps | About</title>
+    <link rel="stylesheet" href="others.css">
+    <link rel="icon" href="img/logo.png">
+  </head>
+  <body>
+    <header>
+      <div class="container_web">
+        <div id="branding">
+          <h1><span class="highlight">JMART</span> Groceries Stores</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li class="current"><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            
+    <li class="profile-box">
+      <img src="img/profile.png" alt="" class="profile-img">
+      <span class="profile-name">John Doe</span>
+      <div class="logout-dropdown">
+        <button class="logout-btn" onclick="location.href='index.html'">Logout</button>
+    </div>
+  </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+<section id="newsletter">
+      <div class="container_web">
+        <h1>Subscribe To Our Newsletter</h1>
+        <form>
+          <input type="email" placeholder="Enter Email..." required>
+          <button type="submit" class="button_1">Subscribe</button>
+        </form>
+    </section>
+    </div>
+    <section id="main">
+      <div class="container_web">
+        <article id="main-col">
+          <h1 class="page-title">About Us</h1>
+          <p>
+            Our mission is to drive positive change by developing innovative products that cater to the needs of vendors, ranging from small enterprises to large corporations. Central to our vision is the steadfast commitment to encouraging widespread adoption of online business solutions, irrespective of a vendor's size
+          </p>
+          <p class="dark">
+              Our goal is to establish an inclusive online platform that empowers all types of vendors, offering them the tools and resources they need to thrive in the digital landscape. Above all, we firmly believe that our success is defined by the happiness and prosperity of every vendor we serve.
+          </p>
+        </article>
+        <aside id="sidebar">
+          <div class="dark">
+            <h3>Get A Quote</h3>
+            <form class="quote">
+  						<div>
+  							<label>Name</label><br>
+  							<input type="text" placeholder="Name">
+  						</div>
+  						<div>
+  							<label>Email</label><br>
+  							<input type="email" placeholder="Email Address">
+  						</div>
+  						<div>
+  							<label>Message</label><br>
+  							<textarea placeholder="Message"></textarea>
+  						</div>
+  						<button class="button_1" type="submit">Send</button>
+					</form>
+          </div>
+        </aside>
+</section>
+    <footer>
+      <p>Jey Products, All Copyright reserved &copy; 2023</p>
+    </footer>
+    
+    <script>
+        // Retrieve the username from local storage
+var username = localStorage.getItem("username");
+
+// Update the profile box with the username
+var profileNameElement = document.querySelector(".profile-name");
+if (profileNameElement) {
+  profileNameElement.textContent = username;
+}
+    </script>
+    
+  </body>
+</html>

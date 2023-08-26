@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Affordable and professional web design">
+	  <meta name="keywords" content="web design, affordable web design, professional web design">
+  	<meta name="author" content="Jeyakrishna">
+    <title>Jey Apps | Services</title>
+    <link rel="stylesheet" href="others.css">
+    <link rel="icon" href="img/logo.png">
+  </head>
+  <body>
+    <header>
+      <div class="container_web">
+        <div id="branding">
+          <h1><span class="highlight">JMART</span> Groceries Stores</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="current"><a href="services.html">Services</a></li>
+            <li class="profile-box">
+      <img src="img/profile.png" alt="" class="profile-img">
+      <span class="profile-name">UserName</span>
+      <div class="logout-dropdown">
+        <button class="logout-btn" onclick="location.href='index.html'">Logout</button>
+    </div>
+  </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+   <section id="newsletter">
+      <div class="container_web">
+        <h1>Subscribe To Our Newsletter</h1>
+        <form>
+          <input type="email" placeholder="Enter Email..." required>
+          <button type="submit" class="button_1">Subscribe</button>
+        </form>
+        </div>
+    </section>
+    
+    <section id="boxes">
+      <div class="container_web">
+        
+          <h1 class="page-title">Our Upcoming Products</h1>
+     
+    <div class="box">
+      <img src="img/bill.png">
+      <h3>Billing App - Version 2.0</h3>
+      <div class="description">
+      <p>
+        We are excited to introduce a transformative enhancement to our billing app on our website. This latest upgrade seamlessly incorporates GST billing and comprehensive payment details directly into the invoice, ensuring a more streamlined and informative billing experience for our valued users.
+      </p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="img/jkart.png">
+      <h3>JKart App</h3>
+      <div class="description">
+      <p>
+        Introducing the upcoming JKart App, a game-changer for WhatsApp vendorpreneurs. Elevate your online selling with JKart's user-friendly platform, designed to empower you with seamless product listings, secure transactions, and a wider reach. Get ready to take your WhatsApp business to new heights with JKart App!
+      </p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="img/pgmanager.png">
+      <h3>PG Manager</h3>
+      <div class="description">
+      <p>
+        Simplify the management of your PG (Paying Guest) or hostel accommodations with our intuitive PG and Hostel Manager. Say goodbye to manual record-keeping and administrative hassles. This tool will streamline tasks such as tenant management, payment tracking, and room allocation, allowing you to focus on providing a comfortable and organized living space.
+      </p>
+      </div>
+    </div>
+</section>
+</div>
+    
+    <footer>
+      <p>Jey Products, All Copyright reserved &copy; 2023</p>
+    </footer>
+    <script>
+        // Retrieve the username from local storage
+var username = localStorage.getItem("username");
+
+// Update the profile box with the username
+var profileNameElement = document.querySelector(".profile-name");
+if (profileNameElement) {
+  profileNameElement.textContent = username;
+}
+    </script>
+  </body>
+</html>
