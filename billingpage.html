@@ -5,9 +5,9 @@
     <meta name="description" content="Billing Website">
 	  <meta name="keywords" content="web design, affordable web design, professional web design">
   	<meta name="author" content="Jeyakrishnan">
-    <title>Billing App | Login</title>
+    <title>Billing App | Main Page</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="icon" href="logo.png">
+    <link rel="icon" href="img/logo.png">
     <link rel="stylesheet" type="text/css" href="billingpage.css">
     <script src="billingpage.js"></script>
 </head>
@@ -30,47 +30,54 @@
   <div class="loading-spinner"></div>
 </div>
 
-
     <div class="custom-welcome-msg">
   Welcome to <span style="font-weight: bold;">JMart Stores</span>. We're glad to have you here!
   <div class="running-message">
     <div class="running-text">
-      This week's Grocery App Maintenance Schedule: Monday 8:00 PM - 10:00 PM, Tuesday 7:30 PM - 9:30 PM, Thursday 6:00 PM - 8:00 PM. For more information, contact Jeyakrishnan at 9944600814.
+      This week's Grocery App Maintenance Schedule: Monday 8:00 PM - 10:00 PM, Tuesday 7:30 PM - 9:30 PM, Thursday 6:00 PM - 8:00 PM. For more information, Please contact us at jeyakrishnanofficial@gmail.com.
     </div>
   </div>
 </div>
 
-<div id="accountName" class="session-name"></div>
+<p></p>
 
-  <div style="display: flex; gap: 10px;">
+  <section id="topButtonSection">
   <button onclick="enterCustomerDetails()">Enter Customer Details</button>
-  
-  <select id="viewBillHistory" onchange="viewSelectedBill()">
-    <option value="" disabled selected>View Bill History</option>
+  <select id="viewSavedBills" onchange="viewSelectedSavedBills()">
+    <option value="" disabled selected>View Saved Bills</option>
   </select>
   <button id="refreshButton" onclick="refreshPage()">Refresh</button>
   <button id="backtoHomePageButton" onclick="navigateToHome()">Home</button>
-<button id="backtoLoginPageButtom" onclick="navigateToLogout()">Log out</button>
+  <button id="billHistoryButton" onclick="navigateTobillHistoryPage()">Bill History</button>
+  <button id="backtoLoginPageButton" onclick="navigateToLogout()">Log out</button>
+  <div id="accountName" class="session-name"></div>
+</section>
 
-  </div>
-  <div id="billHistoryContent" style="display: none;">
+  <div class="modal" id="savedBillsModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeViewSavedBills()">&times;</span>
+    <div class="print-header">
+      <h2>JMart Stores</h2>
+      <p>Elayirampannai</p>
+    </div>
+  <div id="savedBillsContent">
     <!-- Bill history content will be generated dynamically using JavaScript -->
-  </div>
     
-    <div id="BillHistoryBillContent" style="display: none;">
-    <!-- Detailed bill content will be displayed here -->
-    <h2>Detailed Bill</h2>
-    <p id="detailedBill"></p>
-    <button onclick="hideDetailedBill()">Back</button>
-    <button onclick="removeBill()">Remove</button>
+    </div>    
+    <button onclick="editSavedBills()">Edit</button>
+    <button onclick="removeSavedBill()">Remove</button>
+  </div>
     </div>
 
   <div class="customer-details" id="customerDetails">
     <h3>Enter Customer Details</h3>
-    <label for="customerName">Customer Name:</label>
-    <input type="text" id="customerNameInput"><br>
+   
+    <label for="customerName">Customer Name:<span class="required">*</span></label>
+    <input type="text" id="customerNameInput" placeholder="Enter the customer name">
+    
+    
     <label for="phoneNumber">Phone Number:</label>
-    <input type="text" id="phoneNumberInput">
+    <input type="number" id="phoneNumberInput" placeholder="Enter the customer Phone Number">
     <p>
         <label for="cashierName">Cashier Name:</label>
         <select id="cashierName">
@@ -104,9 +111,10 @@
       <button onclick="addItem()">Add Item</button>
     </div>
     </div>
-   <div id="printableDetails">
+   
 <h3>Bill Summary</h3>
 
+<div id="printableDetails">
   <div class="customer-details" id="customerDetails">
     <h3>Enter Customer Details</h3>
     <label for="customerName">Customer Name:</label>
@@ -118,10 +126,13 @@
   
   <div id="billNumber" class="total" style="margin-top: 10px;"></div>
     
+  <div id="timeStamp" class="total" style="margin-top: 10px;"></div>
+  
   <div id="currentDate" class="total" style="margin-top: 10px;"></div>
 
   <div id="customerInfo" class="total" style="margin-top: 10px;"></div>
-
+  
+  <p></p>
   <table id="itemTable">
     <tr>
       <th>Serial Number</th>
@@ -137,26 +148,22 @@
   <p class="total">Total Amount: <span id="totalAmount">₹0.00</span></p>
 
   <p>Cashier: <span id="cashier"></span></p>
-  
-<div style="flex: 1; text-align: right;">
-    <label for="showPerUnitPrice">Show Per Unit Price:</label>
-    <input type="checkbox" id="showPerUnitPrice" checked onchange="togglePerUnitPrice()">
-  </div>
+  <input type="hidden" id="billStatus" value="Saved">
   </div>
   
-  <div class="buttons">
+  <section class="bottomButtonsection">
   <button class="add-advance-button" onclick="addAdvanceAmount()">Add Advance Amount</button>
   <button class="remove-item-button" onclick="removeItem()">Remove Item</button>
- <button class="calculate-total-button" onclick="calculateTotal()">Calculate Total Amount</button>
- 
- <!-- <button class="print-pdf-button" onclick="saveAsPDF()">Save as PDF</button> -->
+  
+ <!-- <button class="calculate-total-button" onclick="calculateTotal()">Calculate Total Amount</button>
+  <button class="print-pdf-button" onclick="saveAsPDF()">Save as PDF</button> -->
+  
  <button class="print-preview-button" onclick="showPrintPreview()">Show Bill Preview</button>
-  
   <button class="save-bill-button" id="saveBill" onclick="saveBill()">Save Bill</button>
-  
   <button class="print-button" onclick="printSummary()">Print Page</button>
-  
-  </div>
+    <input type="checkbox" id="showPerUnitPrice" checked onchange="togglePerUnitPrice()">
+    <label for="showPerUnitPrice">Show Per Unit Price</label>
+  </section>
   
   <div class="modal" id="printPreviewModal">
   <div class="modal-content">
@@ -168,10 +175,18 @@
     <div id="printPreviewContent">
       <!-- Content of the print preview will be inserted here -->
     </div>
+    <div id="printPreviewFooter">
+    <div id="paymentseal">
+    <img src="img/paidseal.png" alt="Paid Seal" class="paid-seal-image">
+    <p>Payment Status: <span class="payment-status">Pending</span></p>
+    </div>
     <div class="print-footer">
       <p>Thank you for shopping at JMart Stores!</p>
     </div>
+    </div>
     <button class="print-button" onclick="printHoverPage()">Print</button>
+    <button class="print-button" onclick="saveDoneBillHistory()">Done</button>
+    <button class="mark-paid-button" onclick="markPaid()">Mark Paid</button>
   </div>
   </div>
 

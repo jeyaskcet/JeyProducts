@@ -1,4 +1,186 @@
-let backupContent = null;
+<!DOCTYPE html>
+<html>
+<head>   
+    <meta charset="utf-8">
+    <meta name="description" content="Billing Website">
+	  <meta name="keywords" content="web design, affordable web design, professional web design">
+  	<meta name="author" content="Jeyakrishnan">
+    <title>Billing App | Login</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" type="text/css" href="billingpage.css">
+    <script src="billingpage.js"></script>
+</head>
+<body>
+    
+    <div id="backupContent" style="display: none;"></div>
+    <div class="container">
+ <!--  <div class="container_1">
+    <div class="logo">
+      <div class="jmart">JMart</div>
+      <div class="store">store</div>
+    </div>
+    <div class="tagline">Your Fresh Grocery Destination</div>
+    <div class="details">
+      <div class="address">6/49, North Street, Elayirampannai</div>
+      <div class="contact">Contact: 9944600814, 8667038973</div>
+    </div>  
+    </div>     -->
+  <div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-spinner"></div>
+</div>
+
+    <div class="custom-welcome-msg">
+  Welcome to <span style="font-weight: bold;">JMart Stores</span>. We're glad to have you here!
+  <div class="running-message">
+    <div class="running-text">
+      This week's Grocery App Maintenance Schedule: Monday 8:00 PM - 10:00 PM, Tuesday 7:30 PM - 9:30 PM, Thursday 6:00 PM - 8:00 PM. For more information, Please contact us at jeyakrishnanofficial@gmail.com.
+    </div>
+  </div>
+</div>
+
+<p></p>
+
+  <section id="topButtonSection">
+  <button onclick="enterCustomerDetails()">Enter Customer Details</button>
+  <select id="viewBillHistory" onchange="viewSelectedBill()">
+    <option value="" disabled selected>View Saved Bills</option>
+  </select>
+  <button id="refreshButton" onclick="refreshPage()">Refresh</button>
+  <button id="backtoHomePageButton" onclick="navigateToHome()">Home</button>
+  <button id="backtoLoginPageButton" onclick="navigateToLogout()">Log out</button>
+  <div id="accountName" class="session-name"></div>
+</section>
+
+  <div class="modal" id="billHistoryModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeViewBillHistory()">&times;</span>
+    <div class="print-header">
+      <h2>JMart Stores</h2>
+      <p>Elayirampannai</p>
+    </div>
+  <div id="billHistoryContent">
+    <!-- Bill history content will be generated dynamically using JavaScript -->
+    </div>
+    <button onclick="editBillHistory()">Edit</button>
+    <button onclick="removeBill()">Remove</button>
+  </div>
+    </div>
+
+  <div class="customer-details" id="customerDetails">
+    <h3>Enter Customer Details</h3>
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerNameInput"><br>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumberInput">
+    <p>
+        <label for="cashierName">Cashier Name:</label>
+        <select id="cashierName">
+          <option value="Jey">Jey</option>
+          <option value="Krishna">Krishna</option>
+          <option value="JK">JK</option>
+          <!-- Add more names as needed -->
+        </select>
+      </p>
+    
+    <button onclick="submitCustomerDetails()">Submit</button>
+  </div>
+
+    <div class="items-input-container">
+  <div class="items-input-box">
+    <label for="itemName">Item Name:</label>
+    <input type="text" id="itemName" placeholder="Enter item name">
+  </div>
+  
+  <div class="items-input-box">
+    <label for="itemQuantity">Item Quantity:</label>
+    <input type="number" id="itemQuantity" placeholder="Enter quantity">
+  </div>
+  
+  <div class="items-input-box">
+    <label for="itemPrice">Item Price:</label>
+    <input type="number" id="itemPrice" placeholder="Enter price">
+  </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+      <button onclick="addItem()">Add Item</button>
+    </div>
+    </div>
+   
+<h3>Bill Summary</h3>
+
+<div id="printableDetails">
+  <div class="customer-details" id="customerDetails">
+    <h3>Enter Customer Details</h3>
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerNameInput"><br>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumberInput">
+    <button onclick="submitCustomerDetails()">Submit</button>
+  </div>
+  
+  <div id="billNumber" class="total" style="margin-top: 10px;"></div>
+    
+  <div id="currentDate" class="total" style="margin-top: 10px;"></div>
+
+  <div id="customerInfo" class="total" style="margin-top: 10px;"></div>
+  
+  <p></p>
+  <table id="itemTable">
+    <tr>
+      <th>Serial Number</th>
+      <th>Item Name</th>
+      <th>Item Quantity</th>
+      <th id="perUnitPriceHeader">Per Unit Price</th>
+      <th>Item Price</th>
+    </tr>
+  </table>
+
+  <p id="advanceAmountDisplay" class="total">(-) Advance Amount: ₹0.00</p>
+
+  <p class="total">Total Amount: <span id="totalAmount">₹0.00</span></p>
+
+  <p>Cashier: <span id="cashier"></span></p>
+  </div>
+  
+  <section class="bottomButtonsection">
+  <button class="add-advance-button" onclick="addAdvanceAmount()">Add Advance Amount</button>
+  <button class="remove-item-button" onclick="removeItem()">Remove Item</button>
+  
+ <!-- <button class="calculate-total-button" onclick="calculateTotal()">Calculate Total Amount</button>
+  <button class="print-pdf-button" onclick="saveAsPDF()">Save as PDF</button> -->
+  
+ <button class="print-preview-button" onclick="showPrintPreview()">Show Bill Preview</button>
+  <button class="save-bill-button" id="saveBill" onclick="saveBill()">Save Bill</button>
+  <button class="print-button" onclick="printSummary()">Print Page</button>
+    <input type="checkbox" id="showPerUnitPrice" checked onchange="togglePerUnitPrice()">
+    <label for="showPerUnitPrice">Show Per Unit Price</label>
+  </section>
+  
+  <div class="modal" id="printPreviewModal">
+  <div class="modal-content">
+    <span class="close" onclick="closePrintPreview()">&times;</span>
+    <div class="print-header">
+      <h2>JMart Stores</h2>
+      <p>Elayirampannai</p>
+    </div>
+    <div id="printPreviewContent">
+      <!-- Content of the print preview will be inserted here -->
+    </div>
+    <div id="paymentseal">
+    <img src="img/paidseal.png" alt="Paid Seal" class="paid-seal-image">
+    </div>
+    <div class="print-footer">
+      <p>Thank you for shopping at JMart Stores!</p>
+    </div>
+    <button class="print-button" onclick="printHoverPage()">Print</button>
+    <button class="print-button" onclick="saveBillHistory()">Done</button>
+    <button class="mark-paid-button" onclick="markPaid()">Mark Paid</button>
+  </div>
+  </div>
+<script>
+    
+    let backupContent = null;
 var totalAmount = 0;
 var advanceAmount = 0;
 var billNumber = "";
@@ -7,14 +189,8 @@ var showPerUnitPrice = true;
 var customerName = "";
 var phoneNumber = "";
 var changesMade = false;
-var username = "";
-var password = "";
-var timeStamp = "";
-let paymentStatus = 'Pending';
-
-document.addEventListener("DOMContentLoaded", function() {
-showSavedBillHistory();
-   });
+var username = ""
+var password = ""
 
 // Function to prompt the user to save the current bill
 function promptToSave() {
@@ -32,12 +208,14 @@ function refreshPage() {
 
      promptToSave()
   
-    // Preserve the current URL (home page)
-    var currentUrl = window.location.href;
-
-    // Reload the current URL
-    window.location.href = currentUrl;
+            // Preserve the current URL (home page)
+            var currentUrl = window.location.href;
             
+
+            // Reload the current URL
+            window.location.href = currentUrl;
+            
+            showBillHistory();
         }
 
 function showLoggedInContent() {
@@ -48,7 +226,7 @@ function showLoggedInContent() {
     document.body.innerHTML = billingPageHtmlCode;
     
      // Initial population of bill history dropdown
-    showSavedBillHistory();
+    showBillHistory();
      document.getElementById("accountName").textContent = `Session UserName: ${username}`; 
     
     }
@@ -71,54 +249,23 @@ function getCurrentDate() {
 }
 
 function enterCustomerDetails() {
-    const customerDetails = document.getElementById("customerDetails");
-    
-    // Toggle the display property between 'block' and 'none'
-    if (customerDetails.style.display === "none" || customerDetails.style.display === "") {
-        customerDetails.style.display = "block";
-    } else {
-        customerDetails.style.display = "none";
-    }
+  document.getElementById("customerDetails").style.display = "block";
 }
-
 
 function submitCustomerDetails() {
+  customerName = document.getElementById("customerNameInput").value;
+  phoneNumber = document.getElementById("phoneNumberInput").value;
 
-    const customerName = document.getElementById("customerNameInput").value;
-    const phoneNumber = document.getElementById("phoneNumberInput").value;
-    
-    if (!customerName) {
-       
-        // Display a popup with a message
-        alert("Please enter the customer name to proceed.");
-        return; // Stop further processing
-    } 
-    document.getElementById("customerInfo").textContent = `Customer Name: ${customerName} | Phone Number: ${phoneNumber}`;
+  // Display customer details above summary table
+  document.getElementById("customerInfo").textContent = `Customer Name: ${customerName} | Phone Number: ${phoneNumber}`;
  document.getElementById("customerDetails").style.display = "none";
-
-    const cashierName = document.getElementById("cashierName").value;
-    document.getElementById("cashier").textContent = cashierName;
-
-    generateBillNumber();
-    document.getElementById("currentDate").textContent = `Date & Time: ` + getCurrentDate() + ' | ' + generateTimeStamp();
+  
+  var cashierName = document.getElementById("cashierName").value;
+  document.getElementById("cashier").textContent = cashierName;
+ 
+generateBillNumber(); 
+ document.getElementById("currentDate").textContent = `Date: ` + getCurrentDate();
 }
-
-function generateTimeStamp() {
-
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
-    const meridiem = hours >= 12 ? 'PM' : 'AM';
-    
-    // Convert hours to 12-hour format
-    const formattedHours = hours % 12 || 12;
-
-    const formattedTime = `${formattedHours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${meridiem}`;
-    
-    return formattedTime;
-}
-
 
 function addItem() {
   var itemName = document.getElementById("itemName").value;
@@ -264,21 +411,9 @@ function saveAsPDF() {
 }
 
 function saveBill() {
-
-    const customerName = document.getElementById('customerNameInput').value;
-    const billNumberText = document.getElementById('billNumber').textContent;
-
-const billNumber = parseInt(billNumberText.replace("Bill Number:", "").trim(), 10);
-
-    if (!customerName || !billNumber) {
-        // Prompt the user to enter customer details
-        alert('Please enter customer details before saving the bill.');
-        return;
-    }
      
       const billId = `${customerName}-${billNumber}`;
       const fileName = prompt('Enter bill file name:', billId);
-      
       if (!fileName) return;
 
       // Set the HTML content and save it as a bill
@@ -286,68 +421,30 @@ const billNumber = parseInt(billNumberText.replace("Bill Number:", "").trim(), 1
       //const billContent = document.documentElement.outerHTML;
       const billContent = document.getElementById('printableDetails').innerHTML;
       localStorage.setItem(billId, billContent);
-      
-      // Set the payment status to "Saved"
-    const billStatusElement = document.getElementById('billStatus');
-    billStatusElement.value = "Saved";
 
-}
-    
-function saveDoneBillHistory() {
-
-    const customerName = document.getElementById('customerNameInput').value;
-    const billNumberText = document.getElementById('billNumber').textContent;
-    const billNumber = parseInt(billNumberText.replace("Bill Number:", "").trim(), 10);
-
-    if (!customerName || !billNumber) {
-        alert('Please enter customer details before saving the bill.');
-        return;
+      // Refresh bill history dropdown
+      showBillHistory();
     }
 
-const paymentPrintPreviewStatusElement = document.querySelector('.payment-status');
-var paymentStatus = paymentPrintPreviewStatusElement.textContent;
+function showBillHistory() {
+ 
+      const viewBillHistoryDropdown = document.getElementById('viewBillHistory');
+      viewBillHistoryDropdown.innerHTML = '<option value="" disabled selected>View Bill History</option>'; // Clear previous content
 
-const billStatusElement = document.getElementById('billStatus');
-billStatusElement.value = paymentStatus;
-
-    const billId = `${customerName}-${billNumber}`;
-    const fileName = `${billId}`; // Use a predefined or generated filename
-    const billContent = document.getElementById('printableDetails').innerHTML + document.getElementById('printPreviewFooter').innerHTML;
-    
-    localStorage.setItem(fileName, billContent);
-
-    closePrintPreview();
-}
-
-function showSavedBillHistory() {
-
-    const viewBillHistoryDropdown = document.getElementById('viewSavedBills');
-    viewBillHistoryDropdown.innerHTML = '<option value="" disabled selected>View Saved Bills</option>'; // Clear previous content
-
-    // Retrieve and display bill history from localStorage
-    for (let i = 0; i < localStorage.length; i++) {
+      // Retrieve and display bill history from localStorage
+      for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
+        viewBillHistoryDropdown.innerHTML += `<option value="${key}">${key}</option>`;
+      }
 
-        // Retrieve the bill content from localStorage
-        const billContent = localStorage.getItem(key);
-
-const billStatusIdentifier = 'value="Saved"'; 
-
-if (billContent && billContent.includes(billStatusIdentifier)) {
-   
-            viewBillHistoryDropdown.innerHTML += `<option value="${key}">${key}</option>`;
-        }
+      // Display the bill history dropdown
+      viewBillHistoryDropdown.style.display = 'block';
     }
 
-    // Display the bill history dropdown
-    viewBillHistoryDropdown.style.display = 'block';
-}
-
-
-function viewSelectedSavedBills() {
-  const viewBillHistoryDropdown = document.getElementById('viewSavedBills');
+function viewSelectedBill() {
+  const viewBillHistoryDropdown = document.getElementById('viewBillHistory');
   const selectedBillKey = viewBillHistoryDropdown.value;
-  const billHistoryContent = document.getElementById('savedBillsContent');
+  const billHistoryContent = document.getElementById('billHistoryContent');
   
   if (selectedBillKey) {
     const savedBillContent = localStorage.getItem(selectedBillKey);
@@ -356,33 +453,27 @@ function viewSelectedSavedBills() {
     billHistoryContent.innerHTML = savedBillContent;
 
     // Show the modal overlay to display the hover page
-    const billHistoryModal = document.getElementById('savedBillsModal');
+    const billHistoryModal = document.getElementById('billHistoryModal');
     
     billHistoryModal.style.display = 'block';
   }
 }
 
-function closeViewSavedBills() {
-  var billHistoryModal = document.getElementById("savedBillsModal");
+function closeViewBillHistory() {
+  var billHistoryModal = document.getElementById("billHistoryModal");
   billHistoryModal.style.display = "none";
 }
 
-function editSavedBills() {
-
-closeViewSavedBills();
-
-  // Get the content of savedBillsContent
-  const savedBillsContent = document.getElementById('savedBillsContent').cloneNode(true);
-
-  // Get the printableDetails element within billingpage.html (assuming it has an ID)
-  const printableDetails = document.getElementById('printableDetails');
-
-  // Clear the existing content of printableDetails
-  printableDetails.innerHTML = '';
-
-  // Append the content of savedBillsContent to printableDetails
-   printableDetails.appendChild(savedBillsContent);
-
+function editBillHistory() {
+  const billHistoryContent = document.getElementById('billHistoryContent');
+  
+  const entirePageContent = document.getElementById('container');
+  
+  closeViewBillHistory();
+  showLoading();
+  
+    // Replace the entire page content with the content from the hover page
+    entirePageContent.innerHTML = billHistoryContent.innerHTML;
   
 }
 
@@ -426,7 +517,7 @@ function hideDetailedBill() {
     }
 
 function removeSavedBill() {
-      const viewBillHistoryDropdown = document.getElementById('viewSavedBills');
+      const viewBillHistoryDropdown = document.getElementById('viewBillHistory');
       const selectedBillKey = viewBillHistoryDropdown.value;
 
       if (selectedBillKey) {
@@ -550,13 +641,7 @@ function navigateToLogout() {
   showLoading();
   setTimeout(function() {
     window.location.href = "index.html"; // Replace with the actual logout page URL
-  }, 2000); // 3000 milliseconds = 3 seconds
-}
-function navigateTobillHistoryPage() {
-  showLoading();
-  setTimeout(function() {
-    window.location.href = "billHistory.html"; // Replace with the actual logout page URL
-  }, 2000); // 3000 milliseconds = 3 seconds
+  }, 3000); // 3000 milliseconds = 3 seconds
 }
 
 function showLoading() {
@@ -567,46 +652,66 @@ function showLoading() {
 }
 
 function markPaid() {
+      const paidSealImage = document.querySelector('.paid-seal-image');
+      paidSealImage.style.display = 'block';
+
+      // Hide the "Mark Paid" button
+      const markPaidButton = document.querySelector('.mark-paid-button');
+      markPaidButton.style.display = 'none';
+
+      // We can add further actions here, such as updating a database or performing other tasks.
+    }
     
-    if (paymentStatus === 'Paid') {
-        return;
+</script>
+</body>
+</html>
+
+
+function getPaymentStatusFromFilename(filename) {
+    
+    var fileContent = localStorage.getItem(filename);
+    
+    // Extract the payment status from the filename
+    var paymentStatus = extractPaymentStatus(fileContent);
+
+    // Update the payment status in the HTML
+    var paymentStatusElement = document.querySelector(".payment-status");
+    if (paymentStatusElement) {
+        paymentStatusElement.textContent = paymentStatus;
     }
 
-    paymentStatus = 'Paid';
+    // Show or hide buttons based on payment status
+    if (paymentStatus === "Paid") {
+        document.querySelector(".paid-seal-image").style.display = "block";
+    } else {
+        document.getElementById("markPaidButton").style.display = "block";
+        document.getElementById("doneButton").style.display = "block";
+    }
+}
 
-    const paidSealImage = document.querySelector('.paid-seal-image');
-    paidSealImage.style.display = 'block';
-
-    const markPaidButton = document.querySelector('.mark-paid-button');
-    markPaidButton.style.display = 'none';
-
-    const paymentStatusElement = document.querySelector('.payment-status');
-    paymentStatusElement.textContent = paymentStatus;
-    paymentStatusElement.style.color = 'green'; 
-    paymentStatusElement.style.fontweight = 'bold'; 
+// Function to extract payment status from the filename
+function extractPaymentStatus(fileContent) {
     
-    paymentStatusElement.value = "Paid";
+    if (fileContent.includes("paid")) {
+        return "Paid";
+    } else {
+        return "Pending";
+    }
 }
 
-
-function editSavedBills_new() {
-  const ViewPageContent = document.getElementById('printableDetails');
-  const savedBillsContent = document.getElementById('savedBillsContent');
-  
-  // Create an iframe element
-  const iframe = document.createElement('iframe');
-  
-  // Set the source URL to load into the iframe
-  iframe.src = 'billingpage.html';
-  
-  // Define an onload event handler for the iframe
-  iframe.onload = function () {
-    // Append the content of the savedBillsContent element
-    iframe.contentDocument.body.appendChild(savedBillsContent.cloneNode(true));
-  };
-  
-  // Clear previous content and append the iframe to the ViewPageContent element
-  ViewPageContent.innerHTML = '';
-  ViewPageContent.appendChild(iframe);
+function markPaid() {
+    document.querySelector(".payment-status").textContent = "Paid";
+     document.getElementById("markPaidButton").style.display = "none";
+    
 }
 
+function saveUpdatedBill(fileName) {
+
+    const newfileName = fileName; // Use a predefined or generated filename
+    
+    const billContent = document.getElementById('printPreviewContent').innerHTML;
+    
+    localStorage.setItem(newfileName, billContent);
+
+    closePrintPreview();
+}

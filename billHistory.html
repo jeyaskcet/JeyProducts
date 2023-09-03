@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>   
+    <meta charset="utf-8">
+    <meta name="description" content="Billing Website">
+	  <meta name="keywords" content="web design, affordable web design, professional web design">
+  	<meta name="author" content="Jeyakrishnan">
+    <title>Billing App | History</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" type="text/css" href="billingpage.css">
+    <link rel="stylesheet" type="text/css" href="billHistory.css">
+    <script src="billHistory.js"></script>
+</head>
+<body>
+    
+    <div class="container">
+  <div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-spinner"></div>
+</div>
+
+    <div class="custom-welcome-msg">
+  Welcome to <span style="font-weight: bold;">JMart Stores</span>. We're glad to have you here!
+  <div class="running-message">
+    <div class="running-text">
+      This week's Grocery App Maintenance Schedule: Monday 8:00 PM - 10:00 PM, Tuesday 7:30 PM - 9:30 PM, Thursday 6:00 PM - 8:00 PM. For more information, Please contact us at jeyakrishnanofficial@gmail.com.
+    </div>
+  </div>
+</div>
+
+<p></p>
+<!-- Add a div for displaying the delete message -->
+<div id="deleteMessage" class="popup-message">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p id="deleteMessageText"></p>
+</div>
+    
+<div id="topButtonSection">
+  <button id="backtoHomePageButton" onclick="navigateTobillingPage()">Go Back</button>
+  <button id="refreshButton" onclick="refreshPage()">Refresh</button>
+  <button id="backtoLoginPageButton" onclick="navigateToLogout()">Log out</button>
+  <button id="clearAllButton" onclick="clearAllBillHistory()">Clear All</button>
+</div>
+
+<div id="title">
+<h1>Bill History</h1>
+    </div>
+    
+    <div id="billHistory">
+        <!-- Bill history sections will be added here -->
+    </div>
+    
+<div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-spinner"></div>
+   </div>
+
+<div class="modal" id="printPreviewModal">
+  <div class="modal-content">
+    <span class="close" onclick="closePrintPreview()">&times;</span>
+    <div class="print-header">
+      <h2>JMart Stores</h2>
+      <p>Elayirampannai</p>
+    </div>
+    <div id="printPreviewContent">
+      <!-- Content of the print preview will be inserted here -->
+    </div>
+    <div id="paymentseal">
+    <img src="img/paidseal.png" alt="Paid Seal" class="paid-seal-image" style="display: none;">
+    <button id="markPaidButton" style="display: none;" onclick="markPaid()">Mark Paid</button>
+    <button id="doneButton" style="display: none;" onclick="savePaymentStatus()">Done</button>
+</div>
+
+    <button class="print-button" onclick="printHoverPage()">Print</button>
+  </div>
+  </div>
+  </div>
+</body>
+</html>

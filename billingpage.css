@@ -6,6 +6,9 @@
       align-items: center; 
       height: 0vh; 
       margin: 15;
+      background-image: url("");
+    background-size: cover;
+    background-repeat: no-repeat;
     }
 
     .custom-welcome-msg {
@@ -41,7 +44,12 @@
       100% { transform: translateX(-100%); }
     }
 
-    .signout {
+  #topButtonSection {
+  display: flex; 
+  gap: 15px;
+  }
+
+  .signout {
       position: absolute;
       top: 20%;
       right: 10px;
@@ -336,7 +344,6 @@
       cursor: pointer;
       font-weight: bold;
     }
-/* Add these styles to your existing CSS styles */
 
 /* Modal overlay */
 .modal {
@@ -429,3 +436,24 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.paid-seal-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; 
+    opacity: 0.15;
+    z-index: 0; 
+  }
+/* Style the red asterisk */
+.required {
+    color: red;
+    margin-left: 2px;
+}
+
+/* Add a red border to the input box when there's an error */
+#error-input {
+    border: 2px solid red;
+}
+
