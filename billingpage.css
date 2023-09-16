@@ -253,11 +253,17 @@
     th {
       background-color: #f2f2f2;
     }
-    .total {
-      font-size: 16px;
-      font-weight: bold;
-    }
     
+    .billingDetailsSection {
+    margin: 10px 0; 
+}
+
+.total {
+    font-weight: bold;
+    font-size: 16px !important;
+    margin-bottom: 10px; 
+}
+
   .print-preview-button,
   .save-bill-button,
   .add-advance-button,
