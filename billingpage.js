@@ -11,6 +11,7 @@ var username = "";
 var password = "";
 var timeStamp = "";
 let paymentStatus = 'Pending';
+var weekday = "";
 
 document.addEventListener("DOMContentLoaded", function() {
 showSavedBillHistory();
@@ -61,13 +62,34 @@ function generateBillNumber() {
  
 }
 
-// Function to get the current date in the format: MM/DD/YYYY
+// Function to get the current date in the format: DD/MM/YYYY
 function getCurrentDate() {
   const now = new Date();
   const month = (now.getMonth() + 1).toString().padStart(2, '0');
   const day = now.getDate().toString().padStart(2, '0');
   const year = now.getFullYear();
-  return `${month}/${day}/${year}`;
+  return `${day}/${month}/${year}`;
+}
+
+function getWeekdayFromDate(dateString) {
+  const parts = dateString.split('/');
+  if (parts.length !== 3) {
+    return 'Invalid date format';
+  }
+
+  const day = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10) - 1; // Month is 0-based (0 = January, 11 = December)
+  const year = parseInt(parts[2], 10);
+
+  if (isNaN(day) || isNaN(month) || isNaN(year)) {
+    return 'Invalid date';
+  }
+
+  const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const dateObj = new Date(year, month, day);
+  const weekday = weekdays[dateObj.getDay()];
+
+  return weekday;
 }
 
 function enterCustomerDetails() {
@@ -99,8 +121,11 @@ function submitCustomerDetails() {
     const cashierName = document.getElementById("cashierName").value;
     document.getElementById("cashier").textContent = cashierName;
 
+const weekday = getWeekdayFromDate(getCurrentDate());
+
     generateBillNumber();
-    document.getElementById("currentDate").textContent = `Date & Time: ` + getCurrentDate() + ' | ' + generateTimeStamp();
+    document.getElementById("currentDate").textContent = `Date: ` + getCurrentDate() + ' (' + weekday + ')';
+     document.getElementById("timeStamp").textContent = `Time: ` + generateTimeStamp();
 }
 
 function generateTimeStamp() {

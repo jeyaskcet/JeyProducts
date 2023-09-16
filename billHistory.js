@@ -306,7 +306,8 @@ function navigateToLogout() {
 function navigateTobillingPage() {
   showLoading();
   setTimeout(function() {
-    window.location.href = "billingPage.html"; 
+   window.history.back()
+    //window.location.href = "billingPage.html"; 
   }, 1000); 
 }
 

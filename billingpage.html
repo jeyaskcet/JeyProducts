@@ -34,24 +34,28 @@
   Welcome to <span style="font-weight: bold;">JMart Stores</span>. We're glad to have you here!
   <div class="running-message">
     <div class="running-text">
-      This week's Grocery App Maintenance Schedule: Monday 8:00 PM - 10:00 PM, Tuesday 7:30 PM - 9:30 PM, Thursday 6:00 PM - 8:00 PM. For more information, Please contact us at jeyakrishnanofficial@gmail.com.
+      This week's Billing App Maintenance Schedule: Monday 8:00 PM - 10:00 PM, Tuesday 8:30 PM - 9:45 PM, Thursday 6:00 PM - 8:00 PM. For more information, Please contact us at jeyakrishnanofficial@gmail.com.
     </div>
   </div>
 </div>
 
 <p></p>
 
-  <section id="topButtonSection">
-  <button onclick="enterCustomerDetails()">Enter Customer Details</button>
-  <select id="viewSavedBills" onchange="viewSelectedSavedBills()">
-    <option value="" disabled selected>View Saved Bills</option>
-  </select>
-  <button id="refreshButton" onclick="refreshPage()">Refresh</button>
-  <button id="backtoHomePageButton" onclick="navigateToHome()">Home</button>
-  <button id="billHistoryButton" onclick="navigateTobillHistoryPage()">Bill History</button>
-  <button id="backtoLoginPageButton" onclick="navigateToLogout()">Log out</button>
-  <div id="accountName" class="session-name"></div>
-</section>
+ <div class="topButtonContainer">
+  <div id="topNormalButtonSection">
+    <button onclick="enterCustomerDetails()">Enter Customer Details</button>
+    <select id="viewSavedBills" onchange="viewSelectedSavedBills()">
+      <option value="" disabled selected>View Saved Bills</option>
+    </select>
+    <button id="billHistoryButton" onclick="navigateTobillHistoryPage()">Bill History</button>
+    <div id="accountName" class="session-name"></div>
+  </div>
+  <div class="iconbutton-container">
+    <button id="refreshButton" class="iconbutton" onclick="refreshPage()"></button>
+    <button id="backtoHomePageButton" class="iconbutton" onclick="navigateToHome()"></button>
+    <button id="backtoLoginPageButton" class="iconbutton" onclick="navigateToLogout()"></button>
+  </div>
+</div>
 
   <div class="modal" id="savedBillsModal">
   <div class="modal-content">
@@ -71,46 +75,46 @@
 
   <div class="customer-details" id="customerDetails">
     <h3>Enter Customer Details</h3>
-   
-    <label for="customerName">Customer Name:<span class="required">*</span></label>
-    <input type="text" id="customerNameInput" placeholder="Enter the customer name">
+    <div class="input-group">
+      <input type="text" id="customerNameInput" class="input-group_input" required />
+      <label for="customerNameInput" class="input-group_label">Customer Name</label>
+    </div>
+    <div class="input-group">
+      <input type="number" id="phoneNumberInput" class="input-group_input" required />
+      <label for="phoneNumberInput" class="input-group_label">Phone Number</label>
+    </div>
     
-    
-    <label for="phoneNumber">Phone Number:</label>
-    <input type="number" id="phoneNumberInput" placeholder="Enter the customer Phone Number">
-    <p>
-        <label for="cashierName">Cashier Name:</label>
-        <select id="cashierName">
-          <option value="Jey">Jey</option>
-          <option value="Krishna">Krishna</option>
-          <option value="JK">JK</option>
-          <!-- Add more names as needed -->
-        </select>
-      </p>
-    
-    <button onclick="submitCustomerDetails()">Submit</button>
-  </div>
+    <div class="input-group">
+      <label for="cashierName" class="input-group_label_top">Cashier Name</label>
+      <select id="cashierName" class="input-group_input" required>
+        <option value="">Select Cashier Name</option>
+        <option value="Jey">Jey</option>
+        <option value="Krishna">Krishna</option>
+        <option value="JK">JK</option>
+        <!-- Add more names as needed -->
+      </select>
+    </div>
+     <button class="submit-button" onclick="submitCustomerDetails()">Submit</button>
+  </div>    
 
     <div class="items-input-container">
-  <div class="items-input-box">
-    <label for="itemName">Item Name:</label>
-    <input type="text" id="itemName" placeholder="Enter item name">
+  <div class="items-input-group">
+    <input type="text" id="itemName" class="input-group_input" required />
+    <label for="itemName" class="input-group_label">Item Name</label>
   </div>
   
-  <div class="items-input-box">
-    <label for="itemQuantity">Item Quantity:</label>
-    <input type="number" id="itemQuantity" placeholder="Enter quantity">
+  <div class="items-input-group">
+    <input type="number" id="itemQuantity" class="input-group_input" required />
+    <label for="itemQuantity" class="input-group_label">Item Quantity</label>
   </div>
   
-  <div class="items-input-box">
-    <label for="itemPrice">Item Price:</label>
-    <input type="number" id="itemPrice" placeholder="Enter price">
+  <div class="items-input-group">
+    <input type="number" id="itemPrice" class="input-group_input" required />
+    <label for="itemPrice" class="input-group_label">Item Price</label>
   </div>
 
-    <div style="display: flex; justify-content: center; margin-top: 20px;">
-      <button onclick="addItem()">Add Item</button>
-    </div>
-    </div>
+      <button class="add-item-button" onclick="addItem()">Add</button>
+      </div>
    
 <h3>Bill Summary</h3>
 
@@ -126,9 +130,9 @@
   
   <div id="billNumber" class="total" style="margin-top: 10px;"></div>
     
-  <div id="timeStamp" class="total" style="margin-top: 10px;"></div>
-  
   <div id="currentDate" class="total" style="margin-top: 10px;"></div>
+  
+  <div id="timeStamp" class="total" style="margin-top: 10px;"></div>
 
   <div id="customerInfo" class="total" style="margin-top: 10px;"></div>
   
@@ -189,6 +193,10 @@
     <button class="mark-paid-button" onclick="markPaid()">Mark Paid</button>
   </div>
   </div>
-
+  <p></p>
+<div class="footer">
+      &copy; 2023 Jey Products, All Rights Reserved.
+    </div>
+  </div>
 </body>
 </html>
