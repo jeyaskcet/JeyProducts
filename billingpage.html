@@ -98,24 +98,25 @@
   </div>    
 
     <div class="items-input-container">
-  <div class="items-input-group">
-    <input type="text" id="itemName" class="input-group_input" required />
-    <label for="itemName" class="input-group_label">Item Name</label>
-  </div>
-  
-  <div class="items-input-group">
-    <input type="number" id="itemQuantity" class="input-group_input" required />
-    <label for="itemQuantity" class="input-group_label">Item Quantity</label>
-  </div>
-  
-  <div class="items-input-group">
-    <input type="number" id="itemPrice" class="input-group_input" required />
-    <label for="itemPrice" class="input-group_label">Item Price</label>
-  </div>
+    <div class="items-input-group">
+      <input type="text" id="itemName" class="input-group_input" placeholder="" oninput="suggestItem()" required />
+      <label for="itemName" class="input-group_label">Item Name</label>
+      <div id="suggestionContainer" class="suggestion-container"></div>
+    </div>
 
-      <button class="add-item-button" onclick="addItem()">Add</button>
-      </div>
-   
+    <div class="items-input-group">
+      <input type="number" id="itemQuantity" class="input-group_input" placeholder="" required />
+      <label for="itemQuantity" class="input-group_label">Item Quantity</label>
+    </div>
+
+    <div class="items-input-group">
+      <input type="number" id="itemPrice" class="input-group_input" placeholder="" required />
+      <label for="itemPrice" class="input-group_label">Item Price</label>
+    </div>
+    
+    <button class="add-item-button" onclick="addItem()">Add</button>
+  </div>
+    
 <h3>Bill Summary</h3>
 
 <div id="printableDetails">
@@ -129,10 +130,10 @@
   </div>
   
   <div class="billingDetailsSection">
-  <div id="billNumber" class="total"></div>
-  <div id="currentDate" class="total"></div>
-  <div id="timeStamp" class="total"></div>
-  <div id="customerInfo" class="total"></div>
+  <p id="billNumber"></p>
+  <p id="currentDate"></p>
+  <p id="timeStamp"></p>
+  <p id="customerInfo"></p>
   </div>
   
   <p></p>
@@ -150,7 +151,7 @@
 
   <p class="total">Total Amount: <span id="totalAmount">₹0.00</span></p>
 
-  <p>Cashier: <span id="cashier"></span></p>
+  <p class="total">Cashier: <span id="cashier"></span></p>
   <input type="hidden" id="billStatus" value="Saved">
   </div>
   

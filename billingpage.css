@@ -234,17 +234,16 @@
     th {
       background-color: #f2f2f2;
     }
-    
-    .billingDetailsSection {
+.billingDetailsSection p {
     margin: 10px 0; 
-}
-
-.total {
-    font-weight: bold;
     font-size: 16px !important;
-    margin-bottom: 10px; 
+    font-weight: bold;
 }
-
+.total {
+     margin-bottom: 10px;
+     font-size: 16px !important;
+     font-weight: bold;
+}
   .print-preview-button,
   .save-bill-button,
   .add-advance-button,
@@ -451,9 +450,10 @@
       padding: 0 5px;
       transition: transform 500ms, font-size 500ms;
     }
-
+    .input-group_input:not(:placeholder-shown) + .input-group_label,
+   .input-group_input:not(:empty) + .input-group_label,
     .input-group_input:focus + .input-group_label,
-    .input-group_input:valid + .input-group_label {
+    .input-group_input:valid + .input-group_label {  
       top: 0%;
       transform: translate(-5px, -50%) scale(0.8);
       font-size: 12px;
@@ -508,4 +508,16 @@
     .add-item-button:hover,
     {
       background-color: #45a049;
+    }
+    .suggestion-container {
+      position: relative;
+    }
+
+    .suggestion {
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .suggestion:hover {
+      background-color: #ccc;
     }
