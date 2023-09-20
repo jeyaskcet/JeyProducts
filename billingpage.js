@@ -13,6 +13,15 @@ var timeStamp = "";
 let paymentStatus = 'Pending';
 var weekday = "";
 
+
+const items = [
+      { name: "Item 1", price: 10, quantity: 1 },
+      { name: "Item 2", price: 15, quantity: 1 },
+      { name: "Item 3", price: 20, quantity: 1 },
+      // Add more items as needed
+    ];
+    
+    
 document.addEventListener("DOMContentLoaded", function() {
 showSavedBillHistory();
    });
@@ -635,3 +644,41 @@ function editSavedBills_new() {
   ViewPageContent.appendChild(iframe);
 }
 
+function suggestItem() {
+
+      const itemNameInput = document.getElementById("itemName");
+      const suggestionContainer = document.getElementById("suggestionContainer");
+
+      suggestionContainer.innerHTML = "";
+
+      const userInput = itemNameInput.value.toLowerCase();
+
+      const matchingItems = items.filter((item) =>
+        item.name.toLowerCase().includes(userInput)
+      );
+
+      matchingItems.forEach((item) => {
+        const suggestion = document.createElement("div");
+        suggestion.classList.add("suggestion");
+        suggestion.textContent = item.name;
+
+        suggestion.addEventListener("click", () => selectSuggestion(item));
+
+        suggestionContainer.appendChild(suggestion);
+      });
+    }
+
+function selectSuggestion(item) {
+      const itemNameInput = document.getElementById("itemName");
+      const itemQuantityInput = document.getElementById("itemQuantity");
+      const itemPriceInput = document.getElementById("itemPrice");
+
+      itemNameInput.value = item.name;
+      itemQuantityInput.value = item.quantity;
+      itemPriceInput.value = item.price;
+    
+  suggestionContainer.innerHTML = "";
+  
+  //itemPriceInput.focus();
+ // itemQuantityInput.focus();
+}
