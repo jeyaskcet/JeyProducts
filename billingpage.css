@@ -10,7 +10,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     }
-
+    .container {
+      width: 100%;
+      margin: auto;
+      padding: 20px;
+    }
     .custom-welcome-msg {
       position: relative;
       background-color: #3498db;
@@ -181,15 +185,6 @@
       color: #007bff;
     }
     
-        body {
-      font-family: Arial, sans-serif;
-    }
-    .container {
-      width: 100%;
-      margin: auto;
-      padding: 20px;
-    }
-    
     .items-input-container {
     display: flex;
     justify-content: center;
@@ -218,20 +213,6 @@
     background-color: #0056b3;
   }
   
-    .bill-details {
-       width: 100%;
-       margin: auto;
-       padding: 20px;
-    }
-    .bill-details select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  .bill-details p {
-    margin: 10px 0;
-  }
     .item-details {
     border: 1px solid #ccc;
     padding: 10px;
@@ -289,31 +270,6 @@
   .print-pdf-button:hover {
     background-color: #0056b3;
   }
-
-  .address {
-    text-align: center;
-    margin: 20px auto;
-  }
-
-  .address img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 4px solid #007BFF;
-  }
-
-  .address h2 {
-    font-size: 28px;
-    margin: 10px 0;
-    color: #333;
-  }
-
-  .address p {
-    font-size: 16px;
-    margin: 5px 0;
-    color: #777;
-  }
   
   button {
       padding: 10px 20px;
@@ -335,7 +291,6 @@
       font-weight: bold;
     }
 
-/* Modal overlay */
 .modal {
   display: none;
   position: fixed;
@@ -347,7 +302,6 @@
   z-index: 9999;
 }
 
-/* Modal content */
 .modal-content {
   position: absolute;
   top: 50%;
@@ -361,7 +315,6 @@
   overflow-y: auto;
 }
 
-/* Close button style */
 .close {
   position: absolute;
   top: 10px;
@@ -406,11 +359,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  background-color: rgba(0, 0, 0, 0.5);
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Ensure it's above other content */
+  z-index: 9999;
 }
 
 .loading-spinner {
@@ -436,13 +389,12 @@
     opacity: 0.15;
     z-index: 0; 
   }
-/* Style the red asterisk */
+
 .required {
     color: red;
     margin-left: 2px;
 }
 
-/* Add a red border to the input box when there's an error */
 #error-input {
     border: 2px solid red;
 }
@@ -531,7 +483,6 @@
       background-color: #45a049;
     }
 
-    /* Unique Footer Style */
     .footer {
       background-color: #4CAF50;
       color: #fff;
@@ -558,5 +509,3 @@
     {
       background-color: #45a049;
     }
-  
-    
