@@ -77,7 +77,7 @@
     <h3>Enter Customer Details</h3>
     <div class="input-group">
       <input type="text" id="customerNameInput" class="input-group_input" required />
-      <label for="customerNameInput" class="input-group_label">Customer Name</label>
+      <label for="customerNameInput" class="input-group_label">Customer Name<span class="required">*</span></label>
     </div>
     <div class="input-group">
       <input type="number" id="phoneNumberInput" class="input-group_input" required />
@@ -99,18 +99,18 @@
 
     <div class="items-input-container">
     <div class="items-input-group">
-      <input type="text" id="itemName" class="input-group_input" placeholder="" oninput="suggestItem()" required />
+      <input type="text" id="itemName" class="input-group_input" oninput="suggestItem()" required />
       <label for="itemName" class="input-group_label">Item Name</label>
       <div id="suggestionContainer" class="suggestion-container"></div>
     </div>
 
     <div class="items-input-group">
-      <input type="number" id="itemQuantity" class="input-group_input" placeholder="" required />
+      <input type="number" id="itemQuantity" class="input-group_input" required />
       <label for="itemQuantity" class="input-group_label">Item Quantity</label>
     </div>
 
     <div class="items-input-group">
-      <input type="number" id="itemPrice" class="input-group_input" placeholder="" required />
+      <input type="number" id="itemPrice" class="input-group_input" required />
       <label for="itemPrice" class="input-group_label">Item Price</label>
     </div>
     
@@ -130,10 +130,10 @@
   </div>
   
   <div class="billingDetailsSection">
-  <p id="billNumber"></p>
-  <p id="currentDate"></p>
-  <p id="timeStamp"></p>
-  <p id="customerInfo"></p>
+  <p class="total">Bill Number: <span id="billNumber"></span></p>
+  <p class="total">Date: <span id="currentDate"></span></p>
+  <p class="total">Time: <span id="timeStamp"></span></p>
+  <p id="customerInfo">Customer Name: <span id="customerName"></span> | Phone Number: <span id="phoneNumber"></span></p>
   </div>
   
   <p></p>

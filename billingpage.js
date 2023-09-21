@@ -18,6 +18,13 @@ const items = [
       { name: "Item 1", price: 10, quantity: 1 },
       { name: "Item 2", price: 15, quantity: 1 },
       { name: "Item 3", price: 20, quantity: 1 },
+      { name: "Item 4", price: 25, quantity: 1 },
+      { name: "Item 5", price: 30, quantity: 1 },
+      { name: "Item 6", price: 35, quantity: 1 },
+      { name: "Item 7", price: 40, quantity: 1 },
+      { name: "Item 8", price: 45, quantity: 1 },
+      { name: "Item 9", price: 50, quantity: 1 },
+      { name: "Item 10", price: 100, quantity: 1 },
       // Add more items as needed
     ];
     
@@ -67,7 +74,7 @@ function showLoggedInContent() {
 // Function to generate a random bill number (you can modify this logic as needed)
 function generateBillNumber() {
   billNumber = Math.floor(Math.random() * 1000) + 1;
-   document.getElementById("billNumber").textContent = `Bill Number: ` + billNumber; 
+   return billNumber; 
  
 }
 
@@ -118,23 +125,37 @@ function submitCustomerDetails() {
     const customerName = document.getElementById("customerNameInput").value;
     const phoneNumber = document.getElementById("phoneNumberInput").value;
     
+    const cashierName = document.getElementById("cashierName").value;
+   
+    const billNumber = generateBillNumber();
+    
+    const currentDate = getCurrentDate() + ' (' + getWeekdayFromDate(getCurrentDate()) + ')';
+    
+    const timeStamp = generateTimeStamp();
+    
     if (!customerName) {
        
         // Display a popup with a message
         alert("Please enter the customer name to proceed.");
         return; // Stop further processing
     } 
-    document.getElementById("customerInfo").textContent = `Customer Name: ${customerName} | Phone Number: ${phoneNumber}`;
- document.getElementById("customerDetails").style.display = "none";
+   document.getElementById("customerDetails").style.display = "none";
 
-    const cashierName = document.getElementById("cashierName").value;
-    document.getElementById("cashier").textContent = cashierName;
+const billNumberSpan = document.getElementById("billNumber");
+const currentDateSpan = document.getElementById("currentDate");
+const timeStampSpan = document.getElementById("timeStamp");
+const customerNameSpan = document.getElementById("customerName");
+const phoneNumberSpan = document.getElementById("phoneNumber");
+const cashierSpan = document.getElementById("cashierName");
 
-const weekday = getWeekdayFromDate(getCurrentDate());
+// Update the content of the spans with dynamic values
+billNumberSpan.textContent = billNumber;
+currentDateSpan.textContent = currentDate;
+timeStampSpan.textContent = timeStamp;
+customerNameSpan.textContent = customerName;
+phoneNumberSpan.textContent = phoneNumber;
+cashierSpan.textContent = cashierName;
 
-    generateBillNumber();
-    document.getElementById("currentDate").textContent = `Date: ` + getCurrentDate() + ' (' + weekday + ')';
-     document.getElementById("timeStamp").textContent = `Time: ` + generateTimeStamp();
 }
 
 function generateTimeStamp() {
@@ -221,8 +242,8 @@ function removeItem() {
       var itemPrice = parseFloat(itemPriceCell.innerHTML.replace("$", ""));
       
       if (parseInt(serialCell.innerHTML) === serialToRemove) {
-        totalAmount -= itemPrice * itemQuantity;
-        document.getElementById("totalAmount").textContent = "₹" + totalAmount.toFixed(2);
+       // totalAmount -= itemPrice * itemQuantity;
+        //document.getElementById("totalAmount").textContent = "₹" + totalAmount.toFixed(2);
         row.parentNode.removeChild(row);
         break;
       }
@@ -234,6 +255,8 @@ function removeItem() {
       var serialCell = row.cells[0];
       serialCell.innerHTML = i;
     }
+    calculateTotal();
+    
   } else {
     alert("Please enter a valid serial number.");
   }
@@ -646,27 +669,29 @@ function editSavedBills_new() {
 
 function suggestItem() {
 
-      const itemNameInput = document.getElementById("itemName");
-      const suggestionContainer = document.getElementById("suggestionContainer");
+  const itemNameInput = document.getElementById("itemName");
+  const suggestionContainer = document.getElementById("suggestionContainer");
 
-      suggestionContainer.innerHTML = "";
+  suggestionContainer.innerHTML = "";
 
-      const userInput = itemNameInput.value.toLowerCase();
+  const userInput = itemNameInput.value.trim().toLowerCase(); // Trim and convert to lowercase
 
-      const matchingItems = items.filter((item) =>
-        item.name.toLowerCase().includes(userInput)
-      );
+  if (userInput !== "") { // Check if userInput is not empty
+    const matchingItems = items.filter((item) =>
+      item.name.toLowerCase().includes(userInput)
+    );
 
-      matchingItems.forEach((item) => {
-        const suggestion = document.createElement("div");
-        suggestion.classList.add("suggestion");
-        suggestion.textContent = item.name;
+    matchingItems.forEach((item) => {
+      const suggestion = document.createElement("div");
+      suggestion.classList.add("suggestion");
+      suggestion.textContent = item.name;
 
-        suggestion.addEventListener("click", () => selectSuggestion(item));
+      suggestion.addEventListener("click", () => selectSuggestion(item));
 
-        suggestionContainer.appendChild(suggestion);
-      });
-    }
+      suggestionContainer.appendChild(suggestion);
+    });
+  }
+}
 
 function selectSuggestion(item) {
       const itemNameInput = document.getElementById("itemName");
@@ -681,4 +706,5 @@ function selectSuggestion(item) {
   
   //itemPriceInput.focus();
  // itemQuantityInput.focus();
+ 
 }

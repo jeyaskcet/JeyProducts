@@ -7,13 +7,18 @@
       height: 0vh; 
       margin: 15;
       background-image: url("");
-    background-size: cover;
-    background-repeat: no-repeat;
+      background-size: cover;
+      background-repeat: no-repeat;
+      
     }
     .container {
       width: 100%;
       margin: auto;
       padding: 20px;
+      background-image: url("");
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding-right: 10px;
     }
     .custom-welcome-msg {
       position: relative;
@@ -450,8 +455,7 @@
       padding: 0 5px;
       transition: transform 500ms, font-size 500ms;
     }
-    .input-group_input:not(:placeholder-shown) + .input-group_label,
-   .input-group_input:not(:empty) + .input-group_label,
+    
     .input-group_input:focus + .input-group_label,
     .input-group_input:valid + .input-group_label {  
       top: 0%;
@@ -510,7 +514,10 @@
       background-color: #45a049;
     }
     .suggestion-container {
-      position: relative;
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      background-color: white;
     }
 
     .suggestion {
@@ -520,4 +527,5 @@
 
     .suggestion:hover {
       background-color: #ccc;
+    
     }
