@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>   
-    <meta charset="utf-8">
-    <meta name="description" content="Billing Website">
-	  <meta name="keywords" content="web design, affordable web design, professional web design">
-  	<meta name="author" content="Jeyakrishnan">
-    <title>Billing App | Main Page</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Billing App | Main Page</title> 
     <link rel="icon" href="img/logo.png">
     <link rel="stylesheet" type="text/css" href="billingpage.css">
     <script src="billingpage.js"></script>
@@ -15,17 +10,6 @@
     
     <div id="backupContent" style="display: none;"></div>
     <div class="container">
- <!--  <div class="container_1">
-    <div class="logo">
-      <div class="jmart">JMart</div>
-      <div class="store">store</div>
-    </div>
-    <div class="tagline">Your Fresh Grocery Destination</div>
-    <div class="details">
-      <div class="address">6/49, North Street, Elayirampannai</div>
-      <div class="contact">Contact: 9944600814, 8667038973</div>
-    </div>  
-    </div>     -->
   <div id="loadingOverlay" class="loading-overlay">
   <div class="loading-spinner"></div>
 </div>
@@ -129,11 +113,11 @@
     <button onclick="submitCustomerDetails()">Submit</button>
   </div>
   
-  <div class="billingDetailsSection">
-  <p class="total">Bill Number: <span id="billNumber"></span></p>
-  <p class="total">Date: <span id="currentDate"></span></p>
-  <p class="total">Time: <span id="timeStamp"></span></p>
-  <p id="customerInfo">Customer Name: <span id="customerName"></span> | Phone Number: <span id="phoneNumber"></span></p>
+  <div id="billingDetailsSection">
+  <p>Bill Number: <span id="billNumber"></span></p>
+  <p>Date: <span id="currentDate"></span></p>
+  <p>Time: <span id="timeStamp"></span></p>
+  <p>Customer Name: <span id="customerName"></span> | Phone Number: <span id="phoneNumber"></span></p>
   </div>
   
   <p></p>
@@ -147,11 +131,11 @@
     </tr>
   </table>
 
-  <p id="advanceAmountDisplay" class="total">(-) Advance Amount: ₹0.00</p>
+  <p id="advanceAmountDisplay" class="amountInfo">(-) Advance Amount: ₹0.00</p>
 
-  <p class="total">Total Amount: <span id="totalAmount">₹0.00</span></p>
+  <p class="amountInfo">Total Amount: <span id="totalAmount">₹0.00</span></p>
 
-  <p class="total">Cashier: <span id="cashier"></span></p>
+  <p class="amountInfo">Cashier: <span id="cashier"></span></p>
   <input type="hidden" id="billStatus" value="Saved">
   </div>
   
