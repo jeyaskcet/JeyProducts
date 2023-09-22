@@ -210,10 +210,10 @@ function addItem() {
 }
 
 function addAdvanceAmount() {
-  var userAdvance = parseFloat(prompt("Enter Advance Amount:", "0.00"));
+  var userAdvance = parseFloat(prompt("Enter Advance Amount:", "0"));
   if (!isNaN(userAdvance)) {
     advanceAmount = userAdvance;
-    document.getElementById("advanceAmountDisplay").textContent = "(-) Advance Amount: ₹" + advanceAmount.toFixed(2);
+    document.getElementById("advanceAmountDisplay").textContent = "₹" + advanceAmount.toFixed(2);
     
     calculateTotal();
   }

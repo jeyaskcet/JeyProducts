@@ -2,10 +2,14 @@
 <html>
 <head>   
     <meta name="viewport" content="width=device-width, initial-scale=0">
+    <meta charset="utf-8">
+    <meta name="description" content="Billing Website">
+	  <meta name="keywords" content="web design, affordable web design, professional web design">
+  	<meta name="author" content="Jeyakrishnan">
     <title>Billing App | Main Page</title> 
-    <link rel="stylesheet" href="billingpage.css">
     <link rel="icon" href="img/logo.png">
     <script src="billingpage.js"></script>
+    <link rel="stylesheet" href="billingpage.css">
 </head>
 <body>
     
@@ -101,10 +105,9 @@
     
     <button class="add-item-button" onclick="addItem()">Add</button>
   </div>
-    
-<h3>Bill Summary</h3>
 
 <div id="printableDetails">
+    <h3>Bill Summary</h3>
   <div class="customer-details" id="customerDetails">
     <h3>Enter Customer Details</h3>
     <label for="customerName">Customer Name:</label>
@@ -114,12 +117,10 @@
     <button onclick="submitCustomerDetails()">Submit</button>
   </div>
   
-  <div id="billingDetailsSection">
-  <p>Bill Number: <span id="billNumber"></span></p>
-  <p>Date: <span id="currentDate"></span></p>
-  <p>Time: <span id="timeStamp"></span></p>
-  <p>Customer Name: <span id="customerName"></span> | Phone Number: <span id="phoneNumber"></span></p>
-  </div>
+  <div id="billingDetailsSection">Bill Number: <span id="billNumber"></span></div>
+  <div id="billingDetailsSection">Date: <span id="currentDate"></span></div>
+  <div id="billingDetailsSection">Time: <span id="timeStamp"></span></div>
+  <div id="billingDetailsSection">Customer Name: <span id="customerName"></span> | Phone Number: <span id="phoneNumber"></span></div>
   
   <p></p>
   <table id="itemTable">
@@ -132,13 +133,15 @@
     </tr>
   </table>
 
-  <p id="advanceAmountDisplay" class="amountInfo">(-) Advance Amount: ₹0.00</p>
+<p></p>
+  <div class="amountInfo">(-) Advance Amount: <span id="advanceAmountDisplay">₹0.00</span></div>
 
-  <p class="amountInfo">Total Amount: <span id="totalAmount">₹0.00</span></p>
+  <div class="amountInfo">Total Amount: <span id="totalAmount">₹0.00</span></div>
 
-  <p class="amountInfo">Cashier: <span id="cashier"></span></p>
+  <div class="amountInfo">Cashier: <span id="cashier"></span></div>
   <input type="hidden" id="billStatus" value="Saved">
-  </div>
+ </div>
+<p></p>
   
   <section class="bottomButtonsection">
   <button class="add-advance-button" onclick="addAdvanceAmount()">Add Advance Amount</button>
