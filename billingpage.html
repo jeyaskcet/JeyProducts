@@ -115,13 +115,15 @@
     <button onclick="submitCustomerDetails()">Submit</button>
   </div>
   
-  <div><h2>Bill Summary</h2></div>
+<div><h2>Bill Summary</h2></div>
 
 <div id="printableDetails">
-<div class="billingDetailsSection">Bill Number: <span id="billNumber"></span></div>
-<div class="billingDetailsSection">Date: <span id="currentDate"></span></div>
-<div class="billingDetailsSection">Time: <span id="timeStamp"></span></div>
-<div class="billingDetailsSection">Customer Name: <span id="customerName"></span> | Phone Number: <span id="phoneNumber"></span></div>
+<div class="amountInfo">
+<p>Bill Number: <span id="billNumber"></span></p>
+<p>Date: <span id="currentDate"></span></p>
+<p>Time: <span id="timeStamp"></span></p>
+<p>Customer Name: <span id="customerName"></span> | Phone Number: <span id="phoneNumber"></span></p>
+</div>
 
   <p></p>
   <table id="itemTable">
@@ -135,16 +137,16 @@
   </table>
 
 <p></p>
-  <div class="amountInfo">(-) Advance Amount: <span id="advanceAmountDisplay">₹0.00</span></div>
-
-  <div class="amountInfo">Total Amount: <span id="totalAmount">₹0.00</span></div>
-
-  <div class="amountInfo">Cashier: <span id="cashier"></span></div>
+  <div class="amountInfo">
+  <p>(-) Advance Amount: <span id="advanceAmountDisplay">₹0.00</span></p>
+  <p>Total Amount: <span id="totalAmount">₹0.00</span></p>
+  <p>Cashier: <span id="cashier"></span></p>
   <input type="hidden" id="billStatus" value="Saved">
  </div>
+</div>
 <p></p>
   
-  <section class="bottomButtonsection">
+  <div class="bottomButtonsection">
   <button class="add-advance-button" onclick="addAdvanceAmount()">Add Advance Amount</button>
   <button class="remove-item-button" onclick="removeItem()">Remove Item</button>
   
@@ -156,7 +158,7 @@
   <button class="print-button" onclick="printSummary()">Print Page</button>
     <input type="checkbox" id="showPerUnitPrice" checked onchange="togglePerUnitPrice()">
     <label for="showPerUnitPrice">Show Per Unit Price</label>
-  </section>
+  </div>
   
   <div class="modal" id="printPreviewModal">
   <div class="modal-content">
