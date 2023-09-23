@@ -465,7 +465,7 @@
     }
     
   @page {
-            size: 80mm 50mm;
+            size: 150mm 300mm;
             margin: 0;
         }
 
@@ -498,6 +498,13 @@
             button {
                 display: none; 
             }
+            body * {
+                visibility: hidden;
+            }
 
+            .printableDetails {
+                visibility: visible;
+            }
+            
             /* We can Add more print-specific styles here */
         }
