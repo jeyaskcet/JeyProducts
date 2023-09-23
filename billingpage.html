@@ -114,18 +114,16 @@
     <input type="text" id="phoneNumberInput">
     <button onclick="submitCustomerDetails()">Submit</button>
   </div>
-  
-<div><h2>Bill Summary</h2></div>
 
 <div id="printableDetails">
+<div class="billSummaryTitle">Bill Summary</div>
 <div class="amountInfo">
 <p>Bill Number: <span id="billNumber"></span></p>
 <p>Date: <span id="currentDate"></span></p>
 <p>Time: <span id="timeStamp"></span></p>
 <p>Customer Name: <span id="customerName"></span> | Phone Number: <span id="phoneNumber"></span></p>
 </div>
-
-  <p></p>
+<p></p>
   <table id="itemTable">
     <tr>
       <th>Serial Number</th>
@@ -135,7 +133,6 @@
       <th>Item Price</th>
     </tr>
   </table>
-
 <p></p>
   <div class="amountInfo">
   <p>(-) Advance Amount: <span id="advanceAmountDisplay">₹0.00</span></p>
@@ -144,7 +141,6 @@
   <input type="hidden" id="billStatus" value="Saved">
  </div>
 </div>
-<p></p>
   
   <div class="bottomButtonsection">
   <button class="add-advance-button" onclick="addAdvanceAmount()">Add Advance Amount</button>

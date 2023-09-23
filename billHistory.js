@@ -4,7 +4,7 @@ function openBillHistory(filename) {
 
     if (billHistoryContent !== null) {
         // Display the retrieved content
-        document.getElementById("printPreviewContent").innerHTML = "<h2>Bill Summary</h2>" + billHistoryContent;
+        document.getElementById("printPreviewContent").innerHTML = billHistoryContent;
         
          // Show the modal overlay
   var printPreview = document.getElementById("printPreviewModal");

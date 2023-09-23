@@ -249,6 +249,8 @@ function calculateTotal() {
     totalAmount += itemPrice;
   }
  // advanceAmount = document.getElementById("advanceAmountDisplay").textContent.replace("Advance Amount: ₹0.00","");
+ advanceAmount = document.getElementById("advanceAmountDisplay").textContent.replace("₹", "");
+ 
   totalAmount -= advanceAmount;
   document.getElementById("totalAmount").textContent = "₹" + totalAmount.toFixed(2);
 }
@@ -480,7 +482,7 @@ function showPrintPreview() {
   var printPreviewContent = document.getElementById("printPreviewContent");
 
   // Set the content of the print preview
-  printPreviewContent.innerHTML = "<h2>Current Bill Preview</h2>" + currentBillContent;
+  printPreviewContent.innerHTML = currentBillContent;
 
   // Show the modal overlay
   var printPreviewModal = document.getElementById("printPreviewModal");

@@ -110,13 +110,6 @@
       font-size: 16px;
       cursor: pointer;
     }
-    .container_1 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 10vh;
-    }
     
     .items-input-container {
     display: flex;
@@ -138,23 +131,45 @@
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     margin: 20px;
     width: 500px;
-    height: 300px;
-  
+    height: 300px; 
   }
 
   .customer-details button:hover {
     background-color: #0056b3;
   }
-  
-    .item-details {
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
+  .billSummaryTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0077b6;
+    text-align: left;
+   // text-decoration: underline;
+  }
+  .billInfo {
+     margin-bottom: 10px;
+     font-size: 16px !important;
+     font-weight: bold;
+  }
+   .amountInfo {
+    font-size: 16px;
+    text-align: left;
     background-color: #f7f7f7;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+   // border: 1px solid #ccc;
+  //  padding: 20px;
+ //   border-radius: 5px;   
+    font-weight: bold;
   }
 
+  .amountInfo p {
+    margin: 10px 0;
+  }
+
+  .amountInfo span {
+    font-weight: bold;
+    color: #0077b6;
+  }
+  
     table {
       border-collapse: collapse;
       width: 100%;
@@ -167,17 +182,7 @@
     th {
       background-color: #f2f2f2;
     }
-}
-.billInfo {
-     margin-bottom: 10px;
-     font-size: 16px !important;
-     font-weight: bold;
-}
-.amountInfo {
-     font-size: 16px !important;
-     font-weight: bold;
-     }
-     
+  
   .print-preview-button,
   .save-bill-button,
   .add-advance-button,
@@ -415,18 +420,7 @@
     .submit-button:hover {
       background-color: #45a049;
     }
-
-    .footer {
-      background-color: #4CAF50;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .footer p {
-      margin: 0;
-      font-size: 18px;
-    }
+    
     .add-item-button {
       background-color: #4CAF50;
       color: #fff;
@@ -456,4 +450,16 @@
 
     .suggestion:hover {
       background-color: #ccc;
+    }
+    
+   .footer {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 18px;
     }
