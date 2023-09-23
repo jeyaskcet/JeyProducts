@@ -105,10 +105,7 @@
     
     <button class="add-item-button" onclick="addItem()">Add</button>
   </div>
-  
- <div><h2>Bill Summary</h2></div>
  
-<div id="printableDetails">
   <div class="customer-details" id="customerDetails">
     <h3>Enter Customer Details</h3>
     <label for="customerName">Customer Name:</label>
@@ -118,11 +115,14 @@
     <button onclick="submitCustomerDetails()">Submit</button>
   </div>
   
-  <div id="billingDetailsSection">Bill Number: <span id="billNumber"></span></div>
-  <div id="billingDetailsSection">Date: <span id="currentDate"></span></div>
-  <div id="billingDetailsSection">Time: <span id="timeStamp"></span></div>
-  <div id="billingDetailsSection">Customer Name: <span id="customerName"></span> | Phone Number: <span id="phoneNumber"></span></div>
-  
+  <div><h2>Bill Summary</h2></div>
+
+<div id="printableDetails">
+<div class="billingDetailsSection">Bill Number: <span id="billNumber"></span></div>
+<div class="billingDetailsSection">Date: <span id="currentDate"></span></div>
+<div class="billingDetailsSection">Time: <span id="timeStamp"></span></div>
+<div class="billingDetailsSection">Customer Name: <span id="customerName"></span> | Phone Number: <span id="phoneNumber"></span></div>
+
   <p></p>
   <table id="itemTable">
     <tr>
