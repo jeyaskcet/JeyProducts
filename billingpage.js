@@ -33,30 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
 showSavedBillHistory();
    });
 
-// Function to prompt the user to save the current bill
-function promptToSave() {
-  const shouldSave = window.confirm('Do you want to save your changes before refreshing?');
-  if (shouldSave) {
-     // Call your saveBill function
-     saveBill();
-  } else {
-   
-   // Leave this since Regresh page function will handle this part
-  }
-}
-
-function refreshPage() {
-
-     promptToSave()
-  
-    // Preserve the current URL (home page)
-    var currentUrl = window.location.href;
-
-    // Reload the current URL
-    window.location.href = currentUrl;
-            
-        }
-
 function showLoggedInContent() {
 
     // Retrieve the HTML code from the script tag
@@ -146,7 +122,7 @@ const currentDateSpan = document.getElementById("currentDate");
 const timeStampSpan = document.getElementById("timeStamp");
 const customerNameSpan = document.getElementById("customerName");
 const phoneNumberSpan = document.getElementById("phoneNumber");
-const cashierSpan = document.getElementById("cashierName");
+const cashierSpan = document.getElementById("cashier");
 
 // Update the content of the spans with dynamic values
 billNumberSpan.textContent = billNumber;
@@ -203,6 +179,7 @@ function addItem() {
     document.getElementById("itemPrice").value = "";
     
     calculateTotal();
+    document.getElementById("itemName").focus();
   } else {
     alert("Please enter valid item details.");
   }
@@ -374,6 +351,10 @@ billStatusElement.value = paymentStatus;
     localStorage.setItem(fileName, billContent);
 
     closePrintPreview();
+    showLoading();
+    setTimeout(function() {
+      location.reload();
+    }, 2000);
 }
 
 function showSavedBillHistory() {
@@ -587,7 +568,28 @@ function printHoverPage() {
   document.body.removeChild(printContainer);
 }
 
+function promptToSave() {
+  const shouldSave = window.confirm('Do you want to save your changes before refreshing?');
+  if (shouldSave) {
+     saveBill();
+  } else {
+   
+   // Leave this since Regresh page function will handle this part
+  }
+}
 
+function refreshPage() {
+
+     promptToSave()
+  
+    // Preserve the current URL (home page)
+    var currentUrl = window.location.href;
+
+    // Reload the current URL
+    window.location.href = currentUrl;
+            
+        }
+        
 function onRefreshClick() {
             if (changesMade) {
                 showSaveChangesDialog();
@@ -600,7 +602,7 @@ function navigateToHome() {
   showLoading();
   setTimeout(function() {
     window.location.href = "home.html"; // Replace with the actual home page URL
-  }, 3000); // 3000 milliseconds = 3 seconds
+  }, 2000); // 3000 milliseconds = 3 seconds
 }
 
 function navigateToLogout() {

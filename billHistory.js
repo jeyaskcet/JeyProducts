@@ -93,7 +93,8 @@ function displaySavedBillHistory() {
         // Parse the billContent to extract the totalAmount and paymentStatus
         const parser = new DOMParser();
         const doc = parser.parseFromString(billContent, 'text/html');
-        const totalAmount = parseFloat(doc.getElementById('totalAmount').textContent.trim().replace('₹', ''));
+     //   const totalAmount = parseFloat(doc.getElementById('totalAmount').textContent.trim().replace('₹', ''));
+        const totalAmount = doc.getElementById('totalAmount').textContent.trim().replace('₹', '');
         const paymentStatus = getPaymentStatus(key); // You can set this value dynamically
 
         // Get the date mentioned in the bill content
@@ -131,14 +132,6 @@ function displaySavedBillHistory() {
         }
     }
 }
-           
-        
-function navigateToBillingPage() {
-  showLoading();
-  setTimeout(function() {
-    window.location.href = "billingPage.html"; // Replace with the actual home page URL
-  }, 1000); // 3000 milliseconds = 3 seconds
-}
 
 function showLoading() {
   var loadingOverlay = document.getElementById("loadingOverlay");
@@ -163,7 +156,7 @@ function removeBillHistory(filename) {
             setTimeout(function () {
                 location.reload();
                 deleteMessage.style.display = "none";
-            }, 3000);
+            }, 2000);
         } else {
             alert(filename + " is not available in the bill history.");
         }
@@ -209,7 +202,7 @@ function getPaymentStatusFromFilename(filename) {
 // Function to extract payment status from the filename
 function extractPaymentStatus(fileContent) {
     
-    if (fileContent.includes("paid")) {
+    if (fileContent.includes("Paid</span></p>")) {
         return "Paid";
     } else {
         return "Pending";
@@ -251,11 +244,10 @@ function getPaymentStatus(filename) {
 
 function refreshPage() {
   showLoading();
-  showLoading();
   setTimeout(function() {
     var currentUrl = window.location.href;
     window.location.href = currentUrl;
-  }, 1000); 
+  }, 2000); 
     
    }
         
@@ -300,7 +292,7 @@ function navigateToLogout() {
   showLoading();
   setTimeout(function() {
     window.location.href = "index.html"; // 
-  }, 1000); 
+  }, 2000); 
 }
 
 function navigateTobillingPage() {
@@ -308,7 +300,7 @@ function navigateTobillingPage() {
   setTimeout(function() {
    window.history.back()
     //window.location.href = "billingPage.html"; 
-  }, 1000); 
+  }, 2000); 
 }
 
 function clearAllBillHistory() {
