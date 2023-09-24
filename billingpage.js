@@ -31,6 +31,14 @@ const items = [
     
 document.addEventListener("DOMContentLoaded", function() {
 showSavedBillHistory();
+
+var username = localStorage.getItem("username");
+
+// Update the profile box with the username
+var profileNameElement = document.querySelector(".profile-name");
+if (profileNameElement) {
+  profileNameElement.textContent = username;
+}
    });
 
 function showLoggedInContent() {
@@ -241,6 +249,31 @@ function removeItem() {
 }
 
 function calculateTotal() {
+  totalAmount = 0;
+  var rows = document.querySelectorAll("#itemTable tr");
+  for (var i = 1; i < rows.length; i++) {
+    var row = rows[i];
+    var itemPrice = parseFloat(row.cells[4].innerHTML.replace("₹", ""));
+    totalAmount += itemPrice;
+  }
+  document.getElementById("totalAmount").textContent = "₹" + totalAmount.toFixed(2);
+  calculateAmountDue();
+}
+
+function calculateAmountDue() {
+
+ totalAmount = 0;
+  
+ totalAmount = document.getElementById("totalAmount").textContent.replace("₹", "");
+ 
+ advanceAmount = document.getElementById("advanceAmountDisplay").textContent.replace("₹", "");
+ 
+  totalAmount -= advanceAmount;
+  document.getElementById("billAmountDue").textContent = "₹" + totalAmount.toFixed(2);
+  
+}
+
+function calculateTotal_old() {
   totalAmount = 0;
   var rows = document.querySelectorAll("#itemTable tr");
   for (var i = 1; i < rows.length; i++) {
@@ -534,11 +567,13 @@ function printHoverPage_old() {
 }
 
 function printHoverPage() {
+
   var printPreviewContent = document.getElementById("printPreviewContent").innerHTML;
   
   // Create a hidden element to hold the print content
   var printContainer = document.createElement("div");
   printContainer.style.display = "none";
+        
   printContainer.innerHTML = `
     <style>
       /* Add your existing CSS styles here */

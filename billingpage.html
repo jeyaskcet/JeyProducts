@@ -43,6 +43,12 @@
     <button id="refreshButton" class="iconbutton" onclick="refreshPage()"></button>
     <button id="backtoHomePageButton" class="iconbutton" onclick="navigateToHome()"></button>
     <button id="backtoLoginPageButton" class="iconbutton" onclick="navigateToLogout()"></button>
+    <li class="profile-box">
+      <img src="img/profile.png" alt="" class="profile-img">
+      <span class="profile-name" id="session-name">Jeyakrishnan</span>
+      <div class="logout-dropdown">
+        <button class="logout-btn" onclick="location.href='index.html'">Logout</button>
+    </div>
   </div>
 </div>
 
@@ -135,8 +141,9 @@
   </table>
 <p></p>
   <div class="amountInfo">
+   <p>Total Bill Amount: <span id="totalAmount">₹0.00</span></p>
   <p>(-) Advance Amount: <span id="advanceAmountDisplay">₹0.00</span></p>
-  <p>Total Amount: <span id="totalAmount">₹0.00</span></p>
+  <p>Bill Amount Due: <span id="billAmountDue">₹0.00</span></p>
   <p>Cashier: <span id="cashier"></span></p>
   <input type="hidden" id="billStatus" value="Saved">
  </div>

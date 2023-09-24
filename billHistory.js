@@ -95,6 +95,8 @@ function displaySavedBillHistory() {
         const doc = parser.parseFromString(billContent, 'text/html');
      //   const totalAmount = parseFloat(doc.getElementById('totalAmount').textContent.trim().replace('₹', ''));
         const totalAmount = doc.getElementById('totalAmount').textContent.trim().replace('₹', '');
+        const advanceAmount = doc.getElementById('advanceAmountDisplay').textContent.trim().replace('₹', '');
+        const paymentDue = doc.getElementById('billAmountDue').textContent.trim().replace('₹', '');
         const paymentStatus = getPaymentStatus(key); // You can set this value dynamically
 
         // Get the date mentioned in the bill content
@@ -105,6 +107,8 @@ function displaySavedBillHistory() {
         const bill = {
             filename: key, // Set the filename to the key (e.g., 'CustomerName-BillNumber')
             totalAmount: totalAmount,
+            paymentDue: paymentDue,
+            advanceAmount: advanceAmount,
             paymentStatus: paymentStatus,
             date: dateString, // Store the date from the billContent
         };
@@ -129,8 +133,55 @@ function displaySavedBillHistory() {
 
             const section = createAccordionSection(date, bills);
             billHistory.appendChild(section);
+         
         }
     }
+    displaycalculateBillSummary(billHistoryData);
+    checkTotalBillAmountTally();
+}
+
+function displaycalculateBillSummary(billHistoryData) {
+
+            // Call the calculateBillSummary function to calculate values
+            const summary = calculateBillSummary(billHistoryData);
+
+            // Update the HTML elements with the calculated values
+            document.getElementById('totalBillAmount').textContent = '₹' + summary.totalAmount;
+ 
+document.getElementById('advanceAmount').textContent = '₹' + summary.advanceAmount;
+            document.getElementById('amountPaid').textContent = '₹' + summary.amountPaid;
+            document.getElementById('paymentDue').textContent = '₹' + summary.paymentDue;
+        }
+        
+function calculateBillSummary(billHistoryData) {
+    let totalAmount = 0;
+    let advanceAmount = 0;
+    let amountPaid = 0;
+    let paymentDue = 0;
+
+    for (const dateString in billHistoryData) {
+        if (billHistoryData.hasOwnProperty(dateString)) {
+            const bills = billHistoryData[dateString];
+            for (const bill of bills) {
+                totalAmount += parseFloat(bill.totalAmount);
+                advanceAmount += parseFloat(bill.advanceAmount);
+              //  paymentDue += parseFloat(bill.paymentDue);                
+                
+                if (bill.paymentStatus === 'Paid') {
+                    amountPaid += parseFloat(bill.totalAmount);
+                } else if (bill.paymentStatus === 'Pending') {
+                    paymentDue += parseFloat(bill.paymentDue);
+                }
+            }
+        }
+    }
+
+    return {
+        totalAmount: totalAmount.toFixed(2),
+        advanceAmount: advanceAmount.toFixed(2),
+        amountPaid: amountPaid.toFixed(2),
+        paymentDue: Math.max(paymentDue, 0).toFixed(2), // Ensure paymentDue is at least 0
+    };
 }
 
 function showLoading() {
@@ -138,6 +189,13 @@ function showLoading() {
   if (loadingOverlay) {
     loadingOverlay.style.display = "flex"; // Show the loading overlay
   }
+}
+
+function navigateToHome() {
+  showLoading();
+  setTimeout(function() {
+    window.location.href = "home.html"; // Replace with the actual home page URL
+  }, 2000); // 3000 milliseconds = 3 seconds
 }
 
 function removeBillHistory(filename) {
@@ -325,3 +383,86 @@ function clearAllBillHistory() {
         // User clicked "Cancel," so do nothing
     }
 }
+
+function generateReport() {
+    let reportContent = '<html><head><title>Bill Report</title>';
+    
+    // Include CSS styles from an external stylesheet
+    reportContent += '<link rel="stylesheet" type="text/css" href="generateReport.css">';
+    
+    reportContent += '</head><body>';
+    
+    // Add the content of amountSection
+    const amountSection = document.getElementById('amountSection');
+    reportContent += '<div id="amountSection">' + amountSection.innerHTML + '</div>';
+
+    // Iterate through localStorage and add the content of bills
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const billContent = localStorage.getItem(key);
+
+        // Add each bill content, ensuring it's formatted as HTML
+        reportContent += billContent;
+    }
+
+    reportContent += '</body></html>';
+
+    // Create a new window or tab to display the report content
+    const newWindow = window.open('', '_blank');
+    newWindow.document.write(reportContent);
+    newWindow.document.close();
+
+    // Trigger the print dialog for the new window
+    newWindow.print();
+}
+
+
+function generateReport_old() {
+    const newWindow = window.open('', '_blank');
+    newWindow.document.write('<html><head><title>Bill Report</title></head><body>');
+
+    // Add the content of amountSection
+    const amountSection = document.getElementById('amountSection');
+    newWindow.document.write('<div id="amountSection">' + amountSection.innerHTML + '</div>');
+
+    // Iterate through localStorage and add the content of bills
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const billContent = localStorage.getItem(key);
+
+        // Add each bill content, ensuring it's formatted as HTML
+        newWindow.document.write(billContent);
+    }
+
+    newWindow.document.write('</body></html>');
+    newWindow.document.close();
+
+    // Trigger the print dialog for the new window
+    newWindow.print();
+}
+
+function checkTotalBillAmountTally() {
+
+        const actualTotalBillAmount = parseFloat(document.getElementById("totalBillAmount").textContent.replace('₹', ''));
+        const advanceAmount = parseFloat(document.getElementById("advanceAmount").textContent.replace('₹', ''));
+        const amountPaid = parseFloat(document.getElementById("amountPaid").textContent.replace('₹', ''));
+        const paymentDue = parseFloat(document.getElementById("paymentDue").textContent.replace('₹', ''));
+
+        const expectedTotalBillAmount = advanceAmount + amountPaid + paymentDue;
+
+        // Check if the total bill amount matches the sum
+        const billStatusElement = document.getElementById("billStatus");
+        if (actualTotalBillAmount === expectedTotalBillAmount) {
+            // Display green tick mark
+            billStatusElement.innerHTML = "&#10004;";
+            billStatusElement.style.color = "green";
+        } else {
+            // Display red warning symbol
+            billStatusElement.innerHTML = "&#9888;";
+            billStatusElement.style.color = "red";
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        checkTotalBillAmountTally();
+    });

@@ -1,0 +1,123 @@
+#amountSection {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .section {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .amount {
+            font-size: larger;
+            font-weight: bold;
+            margin-top: 5px; /* Add some top margin to separate label and amount */
+        }
+
+        #totalAmount {
+            color: black;
+        }
+
+        #amountPaid {
+            color: green;
+        }
+
+        #paymentDue {
+            color: red;
+        }
+        .billSummaryTitle {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0077b6;
+    text-align: left;
+   // text-decoration: underline;
+  }
+  .billInfo {
+     margin-bottom: 10px;
+     font-size: 16px !important;
+     font-weight: bold;
+  }
+   .amountInfo {
+    font-size: 16px;
+    text-align: left;
+    background-color: #f7f7f7;
+    padding-top: 5px;
+    padding-bottom: 5px;
+   // border: 1px solid #ccc;
+  //  padding: 20px;
+ //   border-radius: 5px;   
+    font-weight: bold;
+  }
+
+  .amountInfo p {
+    margin: 10px 0;
+  }
+
+  .amountInfo span {
+    font-weight: bold;
+    color: #0077b6;
+  }
+  
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+    }
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  .paid-seal-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; 
+    opacity: 0.15;
+    z-index: 0; 
+  }
+    .print-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .print-header h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #3498db;
+    }
+
+    .print-header p {
+      margin: 0;
+      font-size: 18px;
+      color: #555;
+    }
+    .print-footer {
+     font-style: italic;
+      text-align: center;
+     }
+     
+     .payment-status {
+    
+}
+ .payment-status { 
+     color: blue;
+  }
+ .payment-status:contains('Pending') { 
+     color: red; 
+ }  
+ .payment-status:contains('Paid') { 
+     color: green; 
+ }

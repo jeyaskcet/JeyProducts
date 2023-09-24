@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bill Summary</title>
+    <style>
+        #billHistory {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .section {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .amount {
+            font-size: larger;
+            font-weight: bold;
+            margin-top: 5px; /* Add some top margin to separate label and amount */
+        }
+
+        #totalAmount {
+            color: black;
+        }
+
+        #amountPaid {
+            color: green;
+        }
+
+        #paymentDue {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="billHistory">
+        <div class="section">
+            <div class="label">Total Amount:</div>
+            <div class="amount" id="totalAmount">₹0.00</div>
+        </div>
+        <div class="section">
+            <div class="label">Amount Paid:</div>
+            <div class="amount" id="amountPaid">₹0.00</div>
+        </div>
+        <div class="section">
+            <div class="label">Payment Due:</div>
+            <div class="amount" id="paymentDue">₹0.00</div>
+        </div>
+    </div>
+</body>
+</html>
+
+function generateReport() {
+
+    let reportContent = "";
+    
+    const amountSection = document.getElementById('amountSection');
+    reportContent += amountSection;
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const billContent = localStorage.getItem(key);
+ 
+        reportContent += billContent; 
+        
+    }
+
+    const newWindow = window.open('', '_blank');
+    newWindow.document.write(reportContent);
+
+    newWindow.print();
+}
+
+function generateReport() {
+
+    let reportContent = "";
+
+    for (const dateString in billHistoryData) {
+        if (billHistoryData.hasOwnProperty(dateString)) {
+            const bills = billHistoryData[dateString];
+            for (const bill of bills) {
+                // Append the content of each bill to the reportContent string
+                reportContent += billContentToHTML(bill); // Define this function to convert bill content to HTML
+            }
+        }
+    }
+
+    // Add total amount, amount paid, and payment due sections to the report
+    reportContent += ``;
+
+    const newWindow = window.open('', '_blank');
+    newWindow.document.write(reportContent);
+
+    // Trigger the print dialog for the new window/tab
+    newWindow.print();
+}
+
+// Define functions to calculate total amount, amount paid, and payment due
+function calculateTotalAmount() {
+    // Your calculation logic here
+    // Return the total amount as a number
+}
+
+function calculateAmountPaid() {
+    // Your calculation logic here
+    // Return the amount paid as a number
+}
+
+function calculatePaymentDue() {
+    // Your calculation logic here
+    // Return the payment due as a number
+}
+
+// Define a function to convert bill content to HTML
+function billContentToHTML(bill) {
+    // Your logic to convert bill content to HTML here
+    // Return the bill content as an HTML string
+}

@@ -91,3 +91,55 @@
 #topButtonSection button {
     margin-left: 5px; 
 }
+       #amountSection {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .section {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        .amount {
+            font-size: larger;
+            font-weight: bold;
+            margin-top: 5px; /* Add some top margin to separate label and amount */
+        }
+
+        #totalAmount {
+            color: black;
+        }
+        #advanceAmount {
+            color: green;
+        }
+
+        #amountPaid {
+            color: green;
+        }
+
+        #paymentDue {
+            color: red;
+        }
+   .billHistoryFooter {
+      background-color: #4CAF50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      flex-shrink: 0;
+      margin-top: 200px;
+    }
+
+    .billHistoryFooter p {
+      margin: 0;
+      font-size: 18px;
+    }

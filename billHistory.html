@@ -36,15 +36,46 @@
     <p id="deleteMessageText"></p>
 </div>
     
-<div id="topButtonSection">
+<div class="topButtonContainer">
+   <div id="topNormalButtonSection">
   <button id="backtoHomePageButton" onclick="navigateTobillingPage()">Go Back</button>
-  <button id="refreshButton" onclick="refreshPage()">Refresh</button>
-  <button id="backtoLoginPageButton" onclick="navigateToLogout()">Log out</button>
   <button id="clearAllButton" onclick="clearAllBillHistory()">Clear All</button>
+  <button id="generateReportButton" onclick="generateReport()">Generate Report</button>
+  </div>
+  <div class="iconbutton-container">
+    <button id="refreshButton" class="iconbutton" onclick="refreshPage()"></button>
+    <button id="backtoHomePageButton" class="iconbutton" onclick="navigateToHome()"></button>
+    <button id="backtoLoginPageButton" class="iconbutton" onclick="navigateToLogout()"></button>
+    <li class="profile-box">
+      <img src="img/profile.png" alt="" class="profile-img">
+      <span class="profile-name">Jeyakrishnan</span>
+      <div class="logout-dropdown">
+        <button class="logout-btn" onclick="location.href='index.html'">Logout</button>
+    </div>
+  </div>
 </div>
-
+    
 <div id="title">
 <h1>Bill History</h1>
+    </div>
+    
+    <div id="amountSection">
+        <div class="section">
+            <div class="label">Total Bill Amount: <span class="status" id="billStatus"></span></div>
+            <div class="amount" id="totalBillAmount">₹0.00</div>       
+        </div>
+        <div class="section">
+            <div class="label">Advance Amount:</div>
+            <div class="amount" id="advanceAmount">₹0.00</div>
+        </div>
+        <div class="section">
+            <div class="label">Amount Paid:</div>
+            <div class="amount" id="amountPaid">₹0.00</div>
+        </div>
+        <div class="section">
+            <div class="label">Payment Due:</div>
+            <div class="amount" id="paymentDue">₹0.00</div>
+        </div>
     </div>
     
     <div id="billHistory">
@@ -74,6 +105,9 @@
     <button class="print-button" onclick="printHoverPage()">Print</button>
   </div>
   </div>
-  </div>
+  <div class="billHistoryFooter">
+      &copy; 2023 Jey Products, All Rights Reserved.
+    </div>
+  
 </body>
 </html>
